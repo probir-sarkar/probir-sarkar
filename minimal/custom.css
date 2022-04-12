@@ -1,0 +1,16 @@
+.vh-50{
+    height: 50vh;
+}
+.vh-75{
+    height: 75vh;
+}
+.hero{
+    background-image: url(images/minimal-hero-banner-min.jpg);
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    height: 75vh;
+    width: 100%;
+    position: relative;
+    z-index: -1;
+}
