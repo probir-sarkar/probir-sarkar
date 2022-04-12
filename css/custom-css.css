@@ -1,0 +1,68 @@
+/*Cuscom CSS For Progress bar*/
+.progress-bar-style3 .progress-bar span {
+    color:white;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    padding-right: 5%;
+
+    
+}
+
+.progress-bar-style3 .progress-bar {
+    position: relative;
+    overflow: visible;
+    background-color: #41228e;
+}
+
+
+.progress-bar-style3 .progress-name {
+    font-size: 15px;
+    margin: 5px 0 20px
+}
+
+.progress-bar-style3 .progress-bar-sub {
+    margin-bottom: 25px
+}
+
+.progress-bar-style3 .progress {
+    height: 30px;
+    font-size: inherit;
+}
+
+.progress-bar-style3 .progress {
+    height: 30px;
+    font-size: inherit;
+}
+
+@media screen and (max-width: 600px) {
+  #typed{ 
+    font-size: 40px;
+  }
+}
+
+#certificate .card{
+        box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+      transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+      border-radius: 4px;
+}
+#certificate .card:hover{
+     transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+}
+
+.cl-pink{
+  color: #f54ea2;
+}
+.Anticipated {
+    background-color: #f54ea2;
+    font-size: 100%;
+    color: white;
+    font-weight: 400;
+}
+.cl-blue{
+  color: #41228e;
+}
+.cl-sky{
+  color: #3ef8f4;
+}
