@@ -12,5 +12,16 @@
     height: 75vh;
     width: 100%;
     position: relative;
-    z-index: -1;
+}
+/* max width 768px */
+@media (max-width: 768px) {
+    .hero{
+        height: 50vh;
+    }
+}
+
+
+.py-10{
+    padding-top: 10vh;
+    padding-bottom: 10vh;
 }
