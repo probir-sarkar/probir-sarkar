@@ -31,9 +31,9 @@ Hi, I'm Probir, a full-stack developer passionate about building scalable and pe
 ## Projects
 
 - **Taskify | To Do App** (Jan 2023 - Feb 2023)
-  - A productivity app that helps users create and manage their tasks with ease. Built with React, Redux, React Router, Firebase Authentication, Firebase Realtime Database and Tailwind CSS[^5^][5].
+  - A productivity app that helps users create and manage their tasks with ease. Built with React, Redux, React Router, Firebase Authentication, Firebase Realtime Database and Tailwind CSS.
 - **Tic Tac Toe** (Nov 2022 - Dec 2022)
-  - A web-based Tic Tac Toe game built with React.js and Bootstrap. Features an AI opponent that uses the Minimax algorithm to make optimal moves based on the current state of the board[^7^][7]. The AI move is fetched from an external API that implements the Minimax logic.
+  - A web-based Tic Tac Toe game built with React.js and Bootstrap. Features an AI opponent that uses the Minimax algorithm to make optimal moves based on the current state of the board. The AI move is fetched from an external API that implements the Minimax logic.
 - ... (see more on my LinkedIn profile)
 
 ## Skills
