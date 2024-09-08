@@ -1,63 +1,100 @@
-
-
 # Probir Sarkar
+
+Welcome to my GitHub profile! I am a Full Stack Developer with a passion for building high-performance web applications using modern JavaScript technologies. I specialize in both front-end and back-end development, with a strong focus on creating scalable, efficient, and user-friendly applications.
 
 ## About Me
 
-Hi, I'm Probir, a full-stack developer passionate about building scalable and performant web applications using the MERN stack (MongoDB, Express, React and Node.js). I have experience in developing and deploying web applications using these technologies, as well as integrating them with other APIs and services. I love learning new things and challenging myself. I have completed several online courses and certifications on topics such as MongoDB, Next.js, Agile with Atlassian Jira and Modern Web Design. I also enjoy working on personal projects such as Taskify, a to-do app built with React, Redux and Firebase, and Tic Tac Toe, a game built with React and an external API.
-
-## Experience
-
-- **Back End Developer** at **Girl Power Talk** (May 2023 - Present)
-  - Skills: Next.js · Node.js · Express.js · PostgreSQL · Prisma ORM · Redis · Amazon S3 · Nginx
-- **Junior Web Developer** at **Pretrendy Solution** (Dec 2021 - Mar 2022)
-  - Skills: JavaScript · Bootstrap · PHP · MySQL · jQuery · WordPress
-- **Web Development Intern** at **EcomNuts** (Sep 2019 - Nov 2019)
-  - Skills: WordPress
-
-## Education
-
-- **Bachelor of Technology - BTech, Computer Science** at **Bengal Institute of Technology & Management** (Jul 2019 - Jul 2022)
-  - Grade: 8.63
-- **Diploma, Computer science and technology** at **Santiniketan institute of polytechnic** (May 2016 - May 2019)
-  - Grade: 7.60
-
-## Licenses & Certifications
-
-- **Node.js, Express, MongoDB & More: The Complete Bootcamp 2023** from **Udemy** (Oct 2023)
-- **Introduction to Cloud Computing** from **IBM** (Aug 2023)
-- ... (see more on my LinkedIn profile)
-
-## Projects
-
-- **Taskify | To Do App** (Jan 2023 - Feb 2023)
-  - A productivity app that helps users create and manage their tasks with ease. Built with React, Redux, React Router, Firebase Authentication, Firebase Realtime Database and Tailwind CSS.
-- **Tic Tac Toe** (Nov 2022 - Dec 2022)
-  - A web-based Tic Tac Toe game built with React.js and Bootstrap. Features an AI opponent that uses the Minimax algorithm to make optimal moves based on the current state of the board. The AI move is fetched from an external API that implements the Minimax logic.
-- ... (see more on my LinkedIn profile)
+I am a seasoned developer with expertise in various technologies, including React, Next.js, Node.js, Express, PostgreSQL, and MongoDB. I thrive on solving complex problems and optimizing applications for performance and scalability. My experience spans multiple industries and projects, where I've successfully integrated APIs, reduced load times, and enhanced user experiences.
 
 ## Skills
 
-- JavaScript
-- React.js
-- MongoDB
-- Node.js
-- TypeScript
-- ... (see more on my LinkedIn profile)
+**Programming Languages:**
 
-## Interests
+- JavaScript (ES6+), TypeScript, HTML, CSS
 
-- Web Development
-- MERN Stack
-- Next.js
-- Cloud Computing
-- Data Structures and Algorithms
-- ... (see more on my LinkedIn profile)
+**Front-end Development:**
 
-## Contact Me
+- React.js, Next.js, Redux, Tailwind CSS, Bootstrap, Responsive Design, Sass
 
-- LinkedIn: [www.linkedin.com/in/probir-sarkar](www.linkedin.com/in/probir-sarkar)
-- Email: probirsarkar@gmail.com
-- Phone: +91 9511549471
+**Back-end Development:**
 
-```
+- Node.js, Express.js, MongoDB, SQL, PostgreSQL, Prisma ORM, Redis, JWT
+
+**Infrastructure Services:**
+
+- Git, GitHub, AWS, DigitalOcean, Vercel, Docker, Nginx, Serverless
+
+## Experience
+
+### Front-end Developer | AG Technologies (Jul 2024 - Present)
+
+- **Technologies**: React.js, React Query, Tailwind CSS
+- **Key Contributions**: Optimized API calls by implementing caching, resulting in a 20% decrease in load times.
+
+### Backend Developer | Girl Power Talk (Apr 2023 - Jun 2024)
+
+- **Technologies**: Next.js, Node.js, PostgreSQL, Redis, AWS
+- **Key Contributions**: Led the development of horizontally scalable applications, improved image and page load times by leveraging AWS CloudFront and Redis.
+
+### Junior Web Developer | Pretrendy Solution (Dec 2021 - Mar 2022)
+
+- **Technologies**: PHP, MySQL, WordPress, Bootstrap
+- **Key Contributions**: Enhanced user engagement and improved SEO, leading to a 15% decrease in bounce rate.
+
+### Web Development Intern | EcomNuts (Sep 2019 - Nov 2019)
+
+- **Technologies**: WordPress, DIVI Builder, Canva
+- **Key Contributions**: Reduced page development time by 50% through efficient use of tools.
+
+## Projects
+
+- [**Taskify | To-Do App**](https://taskify.pages.dev/)
+    - **Technologies**: React, Redux, React Router, Firebase (Auth, Realtime Database), Tailwind CSS
+    - **Description**: A productivity app for task management, featuring real-time data sync and user customization.
+    - **Github:** https://github.com/probir-sarkar/to-do-app
+- [**CalcPlus | Toolkit of Calculators**](https://calc-plus.vercel.app/)
+    - **Technologies**: Next.js, Tailwind CSS
+    - **Description**: A web app combining various calculators and conversion tools in a single user-friendly interface.
+    - **Github:** https://github.com/probir-sarkar/calc-plus
+- [**IntelliTac | AI-Based Tic Tac Toe**](https://tic-tac-toe.probir.dev/)
+    - **Technologies**: React.js, Bootstrap, External API (Minimax Algorithm)
+    - **Description**: A Tic Tac Toe game with an AI opponent using the Minimax algorithm for optimal moves.
+    - **Github:** https://github.com/probir-sarkar/tic-tac-toe
+- [**Task Master | Kanban Board Application**](https://task-master.probir.dev/login)
+    - **Technologies**: React, Node.js, Express, MongoDB
+    - **Description**: A simple Kanban board application for task management.
+    - **Github:** https://github.com/probir-sarkar/TaskMaster
+
+[**View All Projects**](https://github.com/probir-sarkar?tab=repositories)
+
+## Blogs
+
+I regularly write about web development, modern JavaScript frameworks, and best practices in software engineering. Check out some of my latest posts:
+
+- [**Best Next.js Libraries and Packages in 2024:](https://blog.probirsarkar.com/best-next-js-libraries-and-packages-in-2024-for-all-your-needs-ae98e9689e06)** Top NPM Packages for State Management, Authentication, UI, Data & More..
+- [**Hono.js vs Express.js:](https://blog.probirsarkar.com/hono-js-vs-express-js-d67108e92ffa)** Which Backend Framework is Right for Your Next Project? (Spoiler: It’s Probably Hono.js)
+- [**Enhance Node.js Performance:](https://blog.probirsarkar.com/unlocking-the-power-of-multi-core-cpus-supercharge-your-node-js-app-with-clustering-c4b4ec5ec94b)** A Guide to Optimizing and Leveraging All CPU Cores
+
+## Education
+
+- **B.Tech in Computer Science** | Bengal Institute of Technology & Management (Jul 2019 - Jul 2022) - GPA: 8.63
+- **Diploma in Computer Science and Technology** | Santiniketan Institute of Polytechnic (May 2016 - May 2019) - GPA: 7.60
+
+## Certifications
+
+- Developing Front-End Apps with React by IBM
+- The Complete React Developer Course by Udemy
+- Developing Back-End Apps with Node.js and Express by IBM
+- The Web Developer Bootcamp by Udemy
+- Responsive Web Design by freeCodeCamp
+- The Fundamentals of Digital Marketing by Google Digital Garage
+
+
+## Get in Touch
+
+- **LinkedIn**: [Probir Sarkar](https://linkedin.com/in/probir-sarkar)
+- **GitHub**: [probir-sarkar](https://github.com/probir-sarkar)
+- **Website**: [probirsarkar.com](https://probirsarkar.com/)
+- **Email**: [me@probirsarkar.com](mailto:me@probirsarkar.com)
+
+Feel free to explore my projects and connect with me!
