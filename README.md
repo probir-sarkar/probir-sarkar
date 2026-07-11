@@ -1,100 +1,176 @@
 # Probir Sarkar
 
-Welcome to my GitHub profile! I am a Full Stack Developer with a passion for building high-performance web applications using modern JavaScript technologies. I specialize in both front-end and back-end development, with a strong focus on creating scalable, efficient, and user-friendly applications.
+Welcome to my GitHub profile! I'm a Full Stack Developer passionate about building high-performance web applications with modern JavaScript technologies. I specialize in creating scalable, efficient, and user-friendly applications across the full stack.
+
+---
 
 ## About Me
 
-I am a seasoned developer with expertise in various technologies, including React, Next.js, Node.js, Express, PostgreSQL, and MongoDB. I thrive on solving complex problems and optimizing applications for performance and scalability. My experience spans multiple industries and projects, where I've successfully integrated APIs, reduced load times, and enhanced user experiences.
+I'm a seasoned developer with expertise in the modern web development stack. My primary focus is building production-ready applications using **React.js**, **Next.js**, **NestJS**, **TanStack**, and **PostgreSQL**. I thrive on solving complex problems, implementing AI/LLM integrations, and optimizing applications for performance and scalability.
+
+My experience spans multiple industries where I've successfully integrated APIs, reduced load times, and enhanced user experiences through serverless architecture and edge computing.
+
+---
 
 ## Skills
 
-**Programming Languages:**
-
+### Programming Languages
 - JavaScript (ES6+), TypeScript, HTML, CSS
 
-**Front-end Development:**
+### Frontend Development
+- Next.js, React.js, TanStack (Start/Query/Router), Redux
+- Tailwind CSS, Shadcn/ui, Next UI, Framer Motion
+- Responsive Design
 
-- React.js, Next.js, Redux, Tailwind CSS, Bootstrap, Responsive Design, Sass
+### Backend Development
+- Node.js, NestJS, Express.js
+- PostgreSQL, MongoDB, Redis
+- Prisma ORM, JWT
 
-**Back-end Development:**
+### AI & LLM
+- LangChain, AI SDK, Tool Calling
+- Durable Workflows, Background Jobs & Queues
+- OpenRouter, vLLM
 
-- Node.js, Express.js, MongoDB, SQL, PostgreSQL, Prisma ORM, Redis, JWT
+### Infrastructure & DevOps
+- Git, GitHub Actions
+- AWS (EC2, S3, RDS, Amplify, CloudFront, CloudWatch)
+- Docker, Cloudflare Workers, Vercel, Nginx
+- Serverless Architecture
 
-**Infrastructure Services:**
-
-- Git, GitHub, AWS, DigitalOcean, Vercel, Docker, Nginx, Serverless
+---
 
 ## Experience
 
-### Front-end Developer | AG Technologies (Jul 2024 - Present)
+### Front-end Developer | AG Technologies
+*Jul 2024 - Present*
 
-- **Technologies**: React.js, React Query, Tailwind CSS
-- **Key Contributions**: Optimized API calls by implementing caching, resulting in a 20% decrease in load times.
+**Technologies:** React.js, Next.js, TanStack (Start, Query, Router), Tailwind CSS, GitHub Actions
 
-### Backend Developer | Girl Power Talk (Apr 2023 - Jun 2024)
+**AWS Services:** EC2, S3, RDS, Amplify, CloudFront, CloudWatch
 
-- **Technologies**: Next.js, Node.js, PostgreSQL, Redis, AWS
-- **Key Contributions**: Led the development of horizontally scalable applications, improved image and page load times by leveraging AWS CloudFront and Redis.
+- Optimized API calls by implementing caching, resulting in a 20% decrease in load times
 
-### Junior Web Developer | Pretrendy Solution (Dec 2021 - Mar 2022)
+---
 
-- **Technologies**: PHP, MySQL, WordPress, Bootstrap
-- **Key Contributions**: Enhanced user engagement and improved SEO, leading to a 15% decrease in bounce rate.
+### Backend Developer | Girl Power Talk
+*Apr 2023 - Jun 2024*
 
-### Web Development Intern | EcomNuts (Sep 2019 - Nov 2019)
+**Technologies:** Next.js, Node.js, PostgreSQL, Redis, AWS
 
-- **Technologies**: WordPress, DIVI Builder, Canva
-- **Key Contributions**: Reduced page development time by 50% through efficient use of tools.
+- Led development of horizontally scalable applications
+- Improved image and page load times by leveraging AWS CloudFront and Redis
 
-## Projects
+---
 
-- [**Taskify**](https://taskify.pages.dev/) | To-Do App
-    - **Technologies**: React, Redux, React Router, Firebase (Auth, Realtime Database), Tailwind CSS
-    - **Description**: A productivity app for task management, featuring real-time data sync and user customization.
-    - **Github:** https://github.com/probir-sarkar/to-do-app
-- [**CalcPlus**](https://calc-plus.vercel.app/) | Toolkit of Calculators
-    - **Technologies**: Next.js, Tailwind CSS
-    - **Description**: A web app combining various calculators and conversion tools in a single user-friendly interface.
-    - **Github:** https://github.com/probir-sarkar/calc-plus
-- [**IntelliTac**](https://tic-tac-toe.probir.dev/) | AI-Based Tic Tac Toe
-    - **Technologies**: React.js, Bootstrap, External API (Minimax Algorithm)
-    - **Description**: A Tic Tac Toe game with an AI opponent using the Minimax algorithm for optimal moves.
-    - **Github:** https://github.com/probir-sarkar/tic-tac-toe
-- [**Task Master**](https://task-master.probir.dev/login) | Kanban Board Application
-    - **Technologies**: React, Node.js, Express, MongoDB
-    - **Description**: A simple Kanban board application for task management.
-    - **Github:** https://github.com/probir-sarkar/TaskMaster
+### Junior Web Developer | Pretrendy Solution
+*Dec 2021 - Mar 2022*
 
-[**View All Projects**](https://github.com/probir-sarkar?tab=repositories)
+**Technologies:** PHP, MySQL, WordPress, Bootstrap
+
+- Enhanced user engagement and improved SEO, resulting in a 15% decrease in bounce rate
+
+---
+
+### Web Development Intern | EcomNuts
+*Sep 2019 - Nov 2019*
+
+**Technologies:** WordPress, DIVI Builder, Canva
+
+- Reduced page development time by 50% through efficient tool utilization
+
+---
+
+## Featured Projects
+
+### [Toolbox](https://toolbox.probir.dev/)
+*A privacy-focused collection of free, powerful utilities*
+
+**Technologies:** TanStack Start, Web Workers
+
+[View on GitHub](https://github.com/probir-sarkar/toolbox)
+
+---
+
+### [Quizzy](https://quizzy.probir.dev/)
+*AI-generated quizzes built autonomously*
+
+**Technologies:** Next.js, AI SDK, OpenRouter
+
+[View on GitHub](https://github.com/probir-sarkar/quizzy)
+
+---
+
+### [WarHistory](https://war-history.probir.dev/)
+*Catalog of major wars and battles spanning 3500 years*
+
+**Technologies:** TanStack Start, Tailwind CSS
+
+[View on GitHub](https://github.com/probir-sarkar/ai-war-history)
+
+---
+
+### [One-Liner JavaScript](https://one-liner-js.probir.dev/)
+*Collection of one-liner JavaScript snippets*
+
+**Technologies:** Astro, Tailwind CSS, Markdown
+
+[View on GitHub](https://github.com/probir-sarkar/one-liner-js)
+
+---
+
+### [Positivus](https://positivus-theme.vercel.app/)
+*Modern digital marketing template*
+
+**Technologies:** Next.js, Tailwind CSS, Shadcn/ui
+
+[View on GitHub](https://github.com/probir-sarkar/positivus)
+
+*[View All Projects](https://github.com/probir-sarkar?tab=repositories)*
+
+---
 
 ## Blogs
 
-I regularly write about web development, modern JavaScript frameworks, and best practices in software engineering. Check out some of my latest posts:
+I regularly write about web development, modern JavaScript frameworks, AI/LLM integrations, and software engineering best practices.
 
-- [**Best Next.js Libraries and Packages in 2024:**](https://blog.probirsarkar.com/best-next-js-libraries-and-packages-in-2024-for-all-your-needs-ae98e9689e06) Top NPM Packages for State Management, Authentication, UI, Data & More..
-- [**Hono.js vs Express.js:**](https://blog.probirsarkar.com/hono-js-vs-express-js-d67108e92ffa) Which Backend Framework is Right for Your Next Project? (Spoiler: It’s Probably Hono.js)
-- [**Enhance Node.js Performance:**](https://blog.probirsarkar.com/unlocking-the-power-of-multi-core-cpus-supercharge-your-node-js-app-with-clustering-c4b4ec5ec94b) A Guide to Optimizing and Leveraging All CPU Cores
+- [Best Next.js Libraries and Packages in 2024](https://blog.probirsarkar.com/best-next-js-libraries-and-packages-in-2024-for-all-your-needs-ae98e9689e06) – Top NPM packages for state management, authentication, UI, data fetching, and more
+
+- [Hono.js vs Express.js](https://blog.probirsarkar.com/hono-js-vs-express-js-d67108e92ffa) – Which backend framework is right for your next project?
+
+- [Enhance Node.js Performance](https://blog.probirsarkar.com/unlocking-the-power-of-multi-core-cpus-supercharge-your-node-js-app-with-clustering-c4b4ec5ec94b) – Guide to optimizing and leveraging all CPU cores with clustering
+
+---
 
 ## Education
 
-- **B.Tech in Computer Science** | Bengal Institute of Technology & Management (Jul 2019 - Jul 2022) - GPA: 8.63
-- **Diploma in Computer Science and Technology** | Santiniketan Institute of Polytechnic (May 2016 - May 2019) - GPA: 7.60
+**B.Tech in Computer Science** – Bengal Institute of Technology & Management
+*Jul 2019 - Jul 2022* | GPA: 8.63
+
+**Diploma in Computer Science and Technology** – Santiniketan Institute of Polytechnic
+*May 2016 - May 2019* | GPA: 7.60
+
+---
 
 ## Certifications
 
-- Developing Front-End Apps with React by IBM
-- The Complete React Developer Course by Udemy
-- Developing Back-End Apps with Node.js and Express by IBM
-- The Web Developer Bootcamp by Udemy
-- Responsive Web Design by freeCodeCamp
-- The Fundamentals of Digital Marketing by Google Digital Garage
+- Developing Front-End Apps with React – IBM
+- The Complete React Developer Course – Udemy
+- Developing Back-End Apps with Node.js and Express – IBM
+- The Web Developer Bootcamp – Udemy
+- Responsive Web Design – freeCodeCamp
+- Fundamentals of Digital Marketing – Google Digital Garage
 
+---
 
-## Get in Touch
+## Get In Touch
 
-- **LinkedIn**: [Probir Sarkar](https://linkedin.com/in/probir-sarkar)
-- **GitHub**: [probir-sarkar](https://github.com/probir-sarkar)
-- **Website**: [probirsarkar.com](https://probirsarkar.com/)
-- **Email**: [me@probirsarkar.com](mailto:me@probirsarkar.com)
+- [LinkedIn](https://linkedin.com/in/probir-sarkar) – [Probir Sarkar](https://linkedin.com/in/probir-sarkar)
+- [GitHub](https://github.com/probir-sarkar) – [@probir-sarkar](https://github.com/probir-sarkar)
+- [Website](https://probirsarkar.com/) – [probirsarkar.com](https://probirsarkar.com/)
+- [Dev Portfolio](https://probir.dev/) – [probir.dev](https://probir.dev/)
+- [Email](mailto:me@probirsarkar.com) – [me@probirsarkar.com](mailto:me@probirsarkar.com)
 
-Feel free to explore my projects and connect with me!
+---
+
+*Feel free to explore my projects and connect with me!*
