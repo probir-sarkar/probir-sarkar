@@ -69,7 +69,7 @@ export const projects: Projects = [
   {
     name: "Personal Portfolio",
     description: "Personal website of Probir, built with Next.js.",
-    github: "https://github.com/probir-sarkar/probir-sarkar-nextjs",
+    github: "https://github.com/probir-sarkar/probir-sarkar",
     live: "https://probirsarkar.com/",
     stack: ["Next.js", "Next UI", "Framer Motion"]
   },
