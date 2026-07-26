@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
 import "./globals.css";
-import { Providers } from "./providers";
+import { Toaster } from "sonner";
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
-  subsets: ["latin"],
+  subsets: ["latin"]
 });
 
 export const metadata: Metadata = {
@@ -18,21 +18,22 @@ export const metadata: Metadata = {
         url: "https://ik.imagekit.io/probir/probirsarkar.com/og-image.jpg?updatedAt=1716879552254",
         width: 1200,
         height: 630,
-        alt: "Probir Sarkar - Full Stack Developer",
-      },
-    ],
-  },
+        alt: "Probir Sarkar - Full Stack Developer"
+      }
+    ]
+  }
 };
 
 export default function RootLayout({
-  children,
+  children
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
     <html lang="en" className="dark">
       <body className={` ${dmSans.variable} antialiased bg-secondary`}>
-        <Providers>{children}</Providers>
+        {children}
+        <Toaster richColors />
       </body>
     </html>
   );

@@ -120,9 +120,9 @@ const ContactForm = () => {
         <Button
           type="submit"
           size="lg"
-          variant="flat"
+          variant="tertiary"
           className={`w-full rounded-none  font-semibold`}
-          isLoading={isSubmitting}
+          isPending={isSubmitting}
         >
           {isSubmitting ? "Submitting.." : "Submit"}
         </Button>

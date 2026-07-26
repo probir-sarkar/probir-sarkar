@@ -1,8 +1,6 @@
-import React from "react";
 import Link from "next/link";
-import { FaCode, FaLink } from "react-icons/fa";
+import { FaLink } from "react-icons/fa";
 import { FiGithub } from "react-icons/fi";
-import Image from "next/image";
 import { Project, projects } from "@/data/project.data";
 
 const ProjectSection = () => {
@@ -56,7 +54,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
           <div className="flex flex-wrap gap-2">
             {project.stack.map((stack) => (
               <div
-                className="relative max-w-fit min-w-min inline-flex items-center justify-between box-border whitespace-nowrap border-medium px-1 h-7 text-small rounded-full bg-transparent border-success text-success"
+                className="relative max-w-fit min-w-min inline-flex items-center justify-between box-border whitespace-nowrap border-2 px-1 h-7 text-sm rounded-full bg-transparent border-primary text-primary"
                 key={stack}
               >
                 <span className="flex-1 text-inherit font-normal px-2">
