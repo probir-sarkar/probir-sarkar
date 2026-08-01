@@ -1,87 +1,57 @@
-import { createFileRoute } from '@tanstack/react-router'
+// import ContactSection from '#/components/contact-section.tsx'
+import Button from '#/components/common/Button.tsx';
+import HeroSkills from '#/components/hero-skills.tsx';
+import ProjectSection from '#/components/project-section.tsx'
+import SkillCards from '#/components/skill-cards.tsx'
+import { createFileRoute, Link } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/')({ component: App })
 
 function App() {
   return (
     <main className="page-wrap px-4 pb-8 pt-14">
-      <section className="island-shell rise-in relative overflow-hidden rounded-[2rem] px-6 py-10 sm:px-10 sm:py-14">
-        <div className="pointer-events-none absolute -left-20 -top-24 h-56 w-56 rounded-full bg-[radial-gradient(circle,rgba(79,184,178,0.32),transparent_66%)]" />
-        <div className="pointer-events-none absolute -bottom-20 -right-20 h-56 w-56 rounded-full bg-[radial-gradient(circle,rgba(47,106,74,0.18),transparent_66%)]" />
-        <p className="island-kicker mb-3">TanStack Start Base Template</p>
-        <h1 className="display-title mb-5 max-w-3xl text-4xl leading-[1.02] font-bold tracking-tight text-[var(--sea-ink)] sm:text-6xl">
-          Start simple, ship quickly.
-        </h1>
-        <p className="mb-8 max-w-2xl text-base text-[var(--sea-ink-soft)] sm:text-lg">
-          This base starter intentionally keeps things light: two routes, clean
-          structure, and the essentials you need to build from scratch.
-        </p>
-        <div className="flex flex-wrap gap-3">
-          <a
-            href="/about"
-            className="rounded-full border border-[rgba(50,143,151,0.3)] bg-[rgba(79,184,178,0.14)] px-5 py-2.5 text-sm font-semibold text-[var(--lagoon-deep)] no-underline transition hover:-translate-y-0.5 hover:bg-[rgba(79,184,178,0.24)]"
-          >
-            About This Starter
-          </a>
-          <a
-            href="https://tanstack.com/router"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-full border border-[rgba(23,58,64,0.2)] bg-white/50 px-5 py-2.5 text-sm font-semibold text-[var(--sea-ink)] no-underline transition hover:-translate-y-0.5 hover:border-[rgba(23,58,64,0.35)]"
-          >
-            Router Guide
-          </a>
-        </div>
-      </section>
-
-      <section className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {[
-          [
-            'Type-Safe Routing',
-            'Routes and links stay in sync across every page.',
-          ],
-          [
-            'Server Functions',
-            'Call server code from your UI without creating API boilerplate.',
-          ],
-          [
-            'Streaming by Default',
-            'Ship progressively rendered responses for faster experiences.',
-          ],
-          [
-            'Tailwind Native',
-            'Design quickly with utility-first styling and reusable tokens.',
-          ],
-        ].map(([title, desc], index) => (
-          <article
-            key={title}
-            className="island-shell feature-card rise-in rounded-2xl p-5"
-            style={{ animationDelay: `${index * 90 + 80}ms` }}
-          >
-            <h2 className="mb-2 text-base font-semibold text-[var(--sea-ink)]">
-              {title}
-            </h2>
-            <p className="m-0 text-sm text-[var(--sea-ink-soft)]">{desc}</p>
-          </article>
-        ))}
-      </section>
-
-      <section className="island-shell mt-8 rounded-2xl p-6">
-        <p className="island-kicker mb-2">Quick Start</p>
-        <ul className="m-0 list-disc space-y-2 pl-5 text-sm text-[var(--sea-ink-soft)]">
-          <li>
-            Edit <code>src/routes/index.tsx</code> to customize the home page.
-          </li>
-          <li>
-            Update <code>src/components/Header.tsx</code> and{' '}
-            <code>src/components/Footer.tsx</code> for brand links.
-          </li>
-          <li>
-            Add routes in <code>src/routes</code> and tweak visual tokens in{' '}
-            <code>src/styles.css</code>.
-          </li>
-        </ul>
-      </section>
+      <div>
+        <section className="min-h-screen flex flex-col justify-between bg-radial to-75% bg-no-repeat from-indigo-900/50 to-transparent">
+          <div className=""></div>
+          <div className="w-10/12 mx-auto">
+            <p className="text-center opacity-75 font-semibold mb-8 ">
+              FULL STACK WEB DEVELOPER
+            </p>
+            <h1 className="text-5xl sm:text-7xl text-center font-bold">
+              Hello, I’m
+              <br />
+              <span className="text-primary ">Probir Sarkar</span>
+            </h1>
+            <p className="max-w-3xl text-center mx-auto mt-8 text-lg">
+              I am a full-stack developer passionate about building scalable and
+              performant web applications using the MERN stack (MongoDB,
+              Express, React and Node.js).
+            </p>
+            <div className="flex justify-center mt-8">
+              <Button variant="primary">
+                <Link to="#contact">Contact Me</Link>
+              </Button>
+            </div>
+          </div>
+          <HeroSkills />
+        </section>
+        <section className="min-h-screen w-full mx-auto bg-pattern-1 pb-8 relative">
+          <div className="w-full h-1/2 bg-linear-to-r from-primary to-secondary"></div>
+          <div className="glowing-border"></div>
+          <h2 className="xl:text-5xl md:text-4xl text-3xl text-center font-bold py-8 leading-relaxed ">
+            Showcase of my <span className="text-primary">skills</span>
+          </h2>
+          <div className="flex ">
+            <div className="w-full  z-1 ">
+              <SkillCards />
+            </div>
+          </div>
+          <div className="absolute top-0 left-0 right-0 bottom-0 bg-gradient-to-b from-transparent from-75% to-secondary  "></div>
+          <div className="absolute top-0 left-0 right-0 bottom-0 bg-gradient-radial from-0% via-50% to-75% bg-no-repeat from-indigo-500/20 to-transparent bg-[length:80%_50%] bg-[50%_-50%]"></div>
+        </section>
+        <ProjectSection />
+        {/* <ContactSection /> */}
+      </div>
     </main>
   )
 }

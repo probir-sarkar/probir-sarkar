@@ -3,7 +3,7 @@ import ContactSection from "@/components/contact-section";
 import HeroSkills from "@/components/hero-skills";
 import ProjectSection from "@/components/project-section";
 import SkillCards from "@/components/skill-cards";
-import Link from "next/link";
+import { Link } from "@tanstack/react-router"
 
 export default function Home() {
   return (
@@ -26,7 +26,7 @@ export default function Home() {
           </p>
           <div className="flex justify-center mt-8">
             <Button variant="primary">
-              <Link href="#contact">Contact Me</Link>
+              <Link to="#contact">Contact Me</Link>
             </Button>
           </div>
         </div>

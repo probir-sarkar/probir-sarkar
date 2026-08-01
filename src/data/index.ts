@@ -1,19 +1,17 @@
 import {
-  FaReact,
-  FaNodeJs,
-  FaGitAlt,
-  FaAws,
-  FaBrain,
-  FaTools,
-  FaStream,
-  FaCogs,
-  FaClock,
-  FaServer
+    FaReact,
+    FaNodeJs,
+    FaGitAlt,
+    FaAws,
+    FaStream,
+    FaCogs,
+    FaClock,
+    FaServer
 } from "react-icons/fa";
 import { TbBrandRedux } from "react-icons/tb";
-import { SiExpress, SiMongodb, SiNextdotjs, SiRedis, SiNestjs, SiDocker, SiLangchain, SiOpenai } from "react-icons/si";
+import { SiExpress, SiMongodb, SiNextdotjs, SiRedis, SiNestjs, SiDocker, SiLangchain } from "react-icons/si";
 import { BiLogoPostgresql, BiLogoJavascript, BiLogoTypescript } from "react-icons/bi";
-import { IconType } from "react-icons";
+import type { IconType } from "react-icons";
 import { MdOutlineWorkspaces } from "react-icons/md";
 
 export type Skill = {

@@ -1,7 +1,8 @@
-import Link from "next/link";
-import { FaLink } from "react-icons/fa";
-import { FiGithub } from "react-icons/fi";
-import { Project, projects } from "@/data/project.data";
+import { Link } from '@tanstack/react-router'
+import { FaLink } from 'react-icons/fa'
+import { FiGithub } from 'react-icons/fi'
+import type { Project } from '@/data/project.data'
+import { projects } from '@/data/project.data'
 
 const ProjectSection = () => {
   return (
@@ -16,10 +17,10 @@ const ProjectSection = () => {
         ))}
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default ProjectSection;
+export default ProjectSection
 
 const ProjectCard = ({ project }: { project: Project }) => {
   return (
@@ -34,14 +35,14 @@ const ProjectCard = ({ project }: { project: Project }) => {
             <Link
               className="hover:text-primary"
               target="_blank"
-              href={project.live}
+              to={project.live}
             >
               <FaLink className="w-5 h-5" />
             </Link>
             <Link
               className="hover:text-primary"
               target="_blank"
-              href={project.github}
+              to={project.github}
             >
               <FiGithub className="w-5 h-5" />
             </Link>
@@ -66,15 +67,15 @@ const ProjectCard = ({ project }: { project: Project }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
 const ProjectImage = ({ project }: { project: Project }) => {
   return (
     <div className="w-full h-36 flex">
-      <div className="w-full h-full bg-gradient-to-tl from-secondary to-slate-900 flex justify-center items-center">
+      <div className="w-full h-full bg-linear-to-tl from-secondary to-slate-900 flex justify-center items-center">
         {project.name}
       </div>
     </div>
-  );
-};
+  )
+}
