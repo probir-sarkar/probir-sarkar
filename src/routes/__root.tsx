@@ -5,8 +5,6 @@ import { Toaster } from 'sonner'
 
 import appCss from '../styles.css?url'
 
-const THEME_INIT_SCRIPT = `(function(){try{var stored=window.localStorage.getItem('theme');var mode=(stored==='light'||stored==='dark'||stored==='auto')?stored:'auto';var prefersDark=window.matchMedia('(prefers-color-scheme: dark)').matches;var resolved=mode==='auto'?(prefersDark?'dark':'light'):mode;var root=document.documentElement;root.classList.remove('light','dark');root.classList.add(resolved);if(mode==='auto'){root.removeAttribute('data-theme')}else{root.setAttribute('data-theme',mode)}root.style.colorScheme=resolved;}catch(e){}})();`
-
 export const Route = createRootRoute({
   head: () => ({
     meta: [
@@ -18,7 +16,23 @@ export const Route = createRootRoute({
         content: 'width=device-width, initial-scale=1',
       },
       {
-        title: 'TanStack Start Starter',
+        title: 'Probir Sarkar - Full Stack Developer',
+      },
+      {
+        name: 'description',
+        content:
+          'Probir Sarkar is a full-stack developer with expertise in web development, software engineering, and technology. He has experience working on a variety of projects, including web applications, mobile apps, and data analysis tools. His skills include JavaScript, React, Node.js, and more.',
+      },
+      { property: 'og:title', content: 'Probir Sarkar - Full Stack Developer' },
+      {
+        property: 'og:description',
+        content:
+          'Probir Sarkar is a full-stack developer with expertise in web development, software engineering, and technology. He has experience working on a variety of projects, including web applications, mobile apps, and data analysis tools. His skills include JavaScript, React, Node.js, and more.',
+      },
+      {
+        property: 'og:image',
+        content:
+          'https://ik.imagekit.io/probir/probirsarkar.com/og-image.jpg?updatedAt=1716879552254',
       },
     ],
     links: [
@@ -33,14 +47,13 @@ export const Route = createRootRoute({
 
 function RootDocument({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className="dark" suppressHydrationWarning>
       <head>
-        <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
         <HeadContent />
       </head>
-      <body className="font-sans antialiased wrap-anywhere selection:bg-[rgba(79,184,178,0.24)]">
+      <body className="font-sans antialiased wrap-anywhere bg-secondary">
         {children}
-        {/* <Toaster richColors /> */}
+        <Toaster richColors />
         <TanStackDevtools
           config={{
             position: 'bottom-right',
