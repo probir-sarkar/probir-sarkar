@@ -1,5 +1,6 @@
 // import ContactSection from '#/components/contact-section.tsx'
 import Button from '#/components/common/Button.tsx';
+import ContactSection from '#/components/contact-section.tsx';
 import HeroSkills from '#/components/hero-skills.tsx';
 import ProjectSection from '#/components/project-section.tsx'
 import SkillCards from '#/components/skill-cards.tsx'
@@ -29,7 +30,7 @@ function App() {
             </p>
             <div className="flex justify-center mt-8">
               <Button variant="primary">
-                <Link to="#contact">Contact Me</Link>
+                <Link to="." hash="contact">Contact Me</Link>
               </Button>
             </div>
           </div>
@@ -50,7 +51,7 @@ function App() {
           <div className="absolute top-0 left-0 right-0 bottom-0 bg-gradient-radial from-0% via-50% to-75% bg-no-repeat from-indigo-500/20 to-transparent bg-[length:80%_50%] bg-[50%_-50%]"></div>
         </section>
         <ProjectSection />
-        {/* <ContactSection /> */}
+        <ContactSection />
       </div>
     </main>
   )
