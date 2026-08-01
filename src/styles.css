@@ -1,5 +1,5 @@
-@import "tailwindcss";
-@import "@heroui/styles";
+@import 'tailwindcss';
+@import '@heroui/styles';
 
 @theme {
   --color-primary: #00dc82 /* your color */;
@@ -9,7 +9,12 @@
 
 .card-gradient:hover {
   background: rgb(0, 0, 0);
-  background-image: linear-gradient(45deg, #ff82f3 0%, #7b13ff 50%, #400d64 100%);
+  background-image: linear-gradient(
+    45deg,
+    #ff82f3 0%,
+    #7b13ff 50%,
+    #400d64 100%
+  );
 }
 
 .glowing-border {

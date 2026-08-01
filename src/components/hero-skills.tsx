@@ -1,10 +1,7 @@
-import { skillData } from "@/data";
-import Image from "next/image";
-
-
+import { skillData } from '@/data'
 
 const HeroSkills = () => {
-  const { skills } = skillData;
+  const { skills } = skillData
   return (
     <div className="">
       <p className="text-center text-xl font-semibold">
@@ -17,7 +14,7 @@ const HeroSkills = () => {
               key={index}
               className="md:h-8 h-6  flex flex-none justify-center items-center"
             >
-              <Image
+              <img
                 src={skill.icon}
                 alt={skill.alt}
                 width={0}
@@ -29,7 +26,7 @@ const HeroSkills = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default HeroSkills;
+export default HeroSkills
