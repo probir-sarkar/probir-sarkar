@@ -33,13 +33,13 @@ export default function Home() {
         <HeroSkills />
       </section>
       <section className="min-h-screen w-full mx-auto bg-pattern-1 pb-8 relative">
-        <div className="w-full h-1/2 bg-gradient-to-r from-primary to-secondary"></div>
+        <div className="w-full h-1/2 bg-linear-to-r from-primary to-secondary"></div>
         <div className="glowing-border"></div>
         <h2 className="xl:text-5xl md:text-4xl text-3xl text-center font-bold py-8 leading-relaxed ">
           Showcase of my <span className="text-primary">skills</span>
         </h2>
         <div className="flex ">
-          <div className="w-full  z-[1] ">
+          <div className="w-full  z-1 ">
             <SkillCards />
           </div>
         </div>

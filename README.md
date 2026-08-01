@@ -1,176 +1,211 @@
-# Probir Sarkar
+Welcome to your new TanStack Start app!
 
-Welcome to my GitHub profile! I'm a Full Stack Developer passionate about building high-performance web applications with modern JavaScript technologies. I specialize in creating scalable, efficient, and user-friendly applications across the full stack.
+# Getting Started
 
----
+To run this application:
 
-## About Me
+```bash
+npm install
+npm run dev
+```
 
-I'm a seasoned developer with expertise in the modern web development stack. My primary focus is building production-ready applications using **React.js**, **Next.js**, **NestJS**, **TanStack**, and **PostgreSQL**. I thrive on solving complex problems, implementing AI/LLM integrations, and optimizing applications for performance and scalability.
+# Building For Production
 
-My experience spans multiple industries where I've successfully integrated APIs, reduced load times, and enhanced user experiences through serverless architecture and edge computing.
+To build this application for production:
 
----
+```bash
+npm run build
+```
 
-## Skills
+## Styling
 
-### Programming Languages
-- JavaScript (ES6+), TypeScript, HTML, CSS
+This project uses [Tailwind CSS](https://tailwindcss.com/) for styling.
 
-### Frontend Development
-- Next.js, React.js, TanStack (Start/Query/Router), Redux
-- Tailwind CSS, Shadcn/ui, Next UI, Framer Motion
-- Responsive Design
+### Removing Tailwind CSS
 
-### Backend Development
-- Node.js, NestJS, Express.js
-- PostgreSQL, MongoDB, Redis
-- Prisma ORM, JWT
+If you prefer not to use Tailwind CSS:
 
-### AI & LLM
-- LangChain, AI SDK, Tool Calling
-- Durable Workflows, Background Jobs & Queues
-- OpenRouter, vLLM
+1. Remove the demo pages in `src/routes/demo/`
+2. Replace the Tailwind import in `src/styles.css` with your own styles
+3. Remove `tailwindcss()` from the plugins array in `vite.config.ts`
+4. Remove `@tailwindcss/vite` and `tailwindcss` from `package.json`
 
-### Infrastructure & DevOps
-- Git, GitHub Actions
-- AWS (EC2, S3, RDS, Amplify, CloudFront, CloudWatch)
-- Docker, Cloudflare Workers, Vercel, Nginx
-- Serverless Architecture
+## Linting & Formatting
 
----
 
-## Experience
+This project uses [eslint](https://eslint.org/) and [prettier](https://prettier.io/) for linting and formatting. Eslint is configured using [tanstack/eslint-config](https://tanstack.com/config/latest/docs/eslint). The following scripts are available:
 
-### Front-end Developer | AG Technologies
-*Jul 2024 - Present*
+```bash
+npm run lint
+npm run format
+npm run check
+```
 
-**Technologies:** React.js, Next.js, TanStack (Start, Query, Router), Tailwind CSS, GitHub Actions
 
-**AWS Services:** EC2, S3, RDS, Amplify, CloudFront, CloudWatch
+## Deploy to Cloudflare Workers
 
-- Optimized API calls by implementing caching, resulting in a 20% decrease in load times
+This project uses the Cloudflare Vite plugin (configured in `vite.config.ts`) and `wrangler.jsonc`:
 
----
+1. Install Wrangler: `npm install -g wrangler`
+2. Authenticate: `wrangler login`
+3. Deploy: `npx wrangler deploy`
 
-### Backend Developer | Girl Power Talk
-*Apr 2023 - Jun 2024*
+For production env vars, run `wrangler secret put MY_VAR` for each secret listed in `.env.example`. Public (non-secret) vars go in `wrangler.jsonc` under `vars`.
 
-**Technologies:** Next.js, Node.js, PostgreSQL, Redis, AWS
+KV, D1, R2, and Durable Object bindings are configured in `wrangler.jsonc` — see https://developers.cloudflare.com/workers/wrangler/configuration/.
 
-- Led development of horizontally scalable applications
-- Improved image and page load times by leveraging AWS CloudFront and Redis
 
----
 
-### Junior Web Developer | Pretrendy Solution
-*Dec 2021 - Mar 2022*
+## Routing
 
-**Technologies:** PHP, MySQL, WordPress, Bootstrap
+This project uses [TanStack Router](https://tanstack.com/router) with file-based routing. Routes are managed as files in `src/routes`.
 
-- Enhanced user engagement and improved SEO, resulting in a 15% decrease in bounce rate
+### Adding A Route
 
----
+To add a new route to your application just add a new file in the `./src/routes` directory.
 
-### Web Development Intern | EcomNuts
-*Sep 2019 - Nov 2019*
+TanStack will automatically generate the content of the route file for you.
 
-**Technologies:** WordPress, DIVI Builder, Canva
+Now that you have two routes you can use a `Link` component to navigate between them.
 
-- Reduced page development time by 50% through efficient tool utilization
+### Adding Links
 
----
+To use SPA (Single Page Application) navigation you will need to import the `Link` component from `@tanstack/react-router`.
 
-## Featured Projects
+```tsx
+import { Link } from "@tanstack/react-router";
+```
 
-### [Toolbox](https://toolbox.probir.dev/)
-*A privacy-focused collection of free, powerful utilities*
+Then anywhere in your JSX you can use it like so:
 
-**Technologies:** TanStack Start, Web Workers
+```tsx
+<Link to="/about">About</Link>
+```
 
-[View on GitHub](https://github.com/probir-sarkar/toolbox)
+This will create a link that will navigate to the `/about` route.
 
----
+More information on the `Link` component can be found in the [Link documentation](https://tanstack.com/router/v1/docs/framework/react/api/router/linkComponent).
 
-### [Quizzy](https://quizzy.probir.dev/)
-*AI-generated quizzes built autonomously*
+### Using A Layout
 
-**Technologies:** Next.js, AI SDK, OpenRouter
+In the File Based Routing setup the layout is located in `src/routes/__root.tsx`. Anything you add to the root route will appear in all the routes. The route content will appear in the JSX where you render `{children}` in the `shellComponent`.
 
-[View on GitHub](https://github.com/probir-sarkar/quizzy)
+Here is an example layout that includes a header:
 
----
+```tsx
+import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
 
-### [WarHistory](https://war-history.probir.dev/)
-*Catalog of major wars and battles spanning 3500 years*
-
-**Technologies:** TanStack Start, Tailwind CSS
-
-[View on GitHub](https://github.com/probir-sarkar/ai-war-history)
-
----
-
-### [One-Liner JavaScript](https://one-liner-js.probir.dev/)
-*Collection of one-liner JavaScript snippets*
-
-**Technologies:** Astro, Tailwind CSS, Markdown
-
-[View on GitHub](https://github.com/probir-sarkar/one-liner-js)
-
----
-
-### [Positivus](https://positivus-theme.vercel.app/)
-*Modern digital marketing template*
-
-**Technologies:** Next.js, Tailwind CSS, Shadcn/ui
-
-[View on GitHub](https://github.com/probir-sarkar/positivus)
-
-*[View All Projects](https://github.com/probir-sarkar?tab=repositories)*
-
----
-
-## Blogs
-
-I regularly write about web development, modern JavaScript frameworks, AI/LLM integrations, and software engineering best practices.
-
-- [Best Next.js Libraries and Packages in 2024](https://blog.probirsarkar.com/best-next-js-libraries-and-packages-in-2024-for-all-your-needs-ae98e9689e06) – Top NPM packages for state management, authentication, UI, data fetching, and more
-
-- [Hono.js vs Express.js](https://blog.probirsarkar.com/hono-js-vs-express-js-d67108e92ffa) – Which backend framework is right for your next project?
-
-- [Enhance Node.js Performance](https://blog.probirsarkar.com/unlocking-the-power-of-multi-core-cpus-supercharge-your-node-js-app-with-clustering-c4b4ec5ec94b) – Guide to optimizing and leveraging all CPU cores with clustering
-
----
-
-## Education
-
-**B.Tech in Computer Science** – Bengal Institute of Technology & Management
-*Jul 2019 - Jul 2022* | GPA: 8.63
-
-**Diploma in Computer Science and Technology** – Santiniketan Institute of Polytechnic
-*May 2016 - May 2019* | GPA: 7.60
-
----
-
-## Certifications
-
-- Developing Front-End Apps with React – IBM
-- The Complete React Developer Course – Udemy
-- Developing Back-End Apps with Node.js and Express – IBM
-- The Web Developer Bootcamp – Udemy
-- Responsive Web Design – freeCodeCamp
-- Fundamentals of Digital Marketing – Google Digital Garage
-
----
-
-## Get In Touch
-
-- [LinkedIn](https://linkedin.com/in/probir-sarkar) – [Probir Sarkar](https://linkedin.com/in/probir-sarkar)
-- [GitHub](https://github.com/probir-sarkar) – [@probir-sarkar](https://github.com/probir-sarkar)
-- [Website](https://probirsarkar.com/) – [probirsarkar.com](https://probirsarkar.com/)
-- [Dev Portfolio](https://probir.dev/) – [probir.dev](https://probir.dev/)
-- [Email](mailto:me@probirsarkar.com) – [me@probirsarkar.com](mailto:me@probirsarkar.com)
-
----
-
-*Feel free to explore my projects and connect with me!*
+export const Route = createRootRoute({
+  head: () => ({
+    meta: [
+      { charSet: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { title: 'My App' },
+    ],
+  }),
+  shellComponent: ({ children }) => (
+    <html lang="en">
+      <head>
+        <HeadContent />
+      </head>
+      <body>
+        <header>
+          <nav>
+            <Link to="/">Home</Link>
+            <Link to="/about">About</Link>
+          </nav>
+        </header>
+        {children}
+        <Scripts />
+      </body>
+    </html>
+  ),
+})
+```
+
+More information on layouts can be found in the [Layouts documentation](https://tanstack.com/router/latest/docs/framework/react/guide/routing-concepts#layouts).
+
+## Server Functions
+
+TanStack Start provides server functions that allow you to write server-side code that seamlessly integrates with your client components.
+
+```tsx
+import { createServerFn } from '@tanstack/react-start'
+
+const getServerTime = createServerFn({
+  method: 'GET',
+}).handler(async () => {
+  return new Date().toISOString()
+})
+
+// Use in a component
+function MyComponent() {
+  const [time, setTime] = useState('')
+  
+  useEffect(() => {
+    getServerTime().then(setTime)
+  }, [])
+  
+  return <div>Server time: {time}</div>
+}
+```
+
+## API Routes
+
+You can create API routes by using the `server` property in your route definitions:
+
+```tsx
+import { createFileRoute } from '@tanstack/react-router'
+import { json } from '@tanstack/react-start'
+
+export const Route = createFileRoute('/api/hello')({
+  server: {
+    handlers: {
+      GET: () => json({ message: 'Hello, World!' }),
+    },
+  },
+})
+```
+
+## Data Fetching
+
+There are multiple ways to fetch data in your application. You can use TanStack Query to fetch data from a server. But you can also use the `loader` functionality built into TanStack Router to load the data for a route before it's rendered.
+
+For example:
+
+```tsx
+import { createFileRoute } from '@tanstack/react-router'
+
+export const Route = createFileRoute('/people')({
+  loader: async () => {
+    const response = await fetch('https://swapi.dev/api/people')
+    return response.json()
+  },
+  component: PeopleComponent,
+})
+
+function PeopleComponent() {
+  const data = Route.useLoaderData()
+  return (
+    <ul>
+      {data.results.map((person) => (
+        <li key={person.name}>{person.name}</li>
+      ))}
+    </ul>
+  )
+}
+```
+
+Loaders simplify your data fetching logic dramatically. Check out more information in the [Loader documentation](https://tanstack.com/router/latest/docs/framework/react/guide/data-loading#loader-parameters).
+
+
+# Demo files
+
+Files prefixed with `demo` can be safely deleted. They are there to provide a starting point for you to play around with the features you've installed.
+
+
+# Learn More
+
+You can learn more about all of the offerings from TanStack in the [TanStack documentation](https://tanstack.com).
+
+For TanStack Start specific documentation, visit [TanStack Start](https://tanstack.com/start).
