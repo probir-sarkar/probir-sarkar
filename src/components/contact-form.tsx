@@ -3,7 +3,7 @@ import { Turnstile } from '@marsidev/react-turnstile';
 
 import { motion } from 'motion/react';
 import { useState } from 'react';
-import { Button } from '@heroui/react';
+import { Button } from '@/components/ui/button'
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import type { SubmitHandler } from 'react-hook-form';
@@ -139,9 +139,9 @@ const ContactForm = () => {
         <Button
           type="submit"
           size="lg"
-          variant="tertiary"
-          className={`w-full rounded-none  font-semibold`}
-          isPending={isSubmitting}
+          variant="outline"
+          disabled={isSubmitting}
+          className="w-full font-semibold rounded-none"
         >
           {isSubmitting ? 'Submitting..' : 'Submit'}
         </Button>
