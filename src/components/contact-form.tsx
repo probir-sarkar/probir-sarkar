@@ -147,6 +147,7 @@ const ContactForm = () => {
           disabled={isSubmitting}
           className="w-full font-semibold rounded-none"
         >
+          {import.meta.env.VITE_TURNSTILE_SITE_KEY}
           {isSubmitting ? 'Submitting..' : 'Submit'}
         </Button>
       </form>
