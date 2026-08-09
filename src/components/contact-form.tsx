@@ -1,14 +1,14 @@
 'use client'
-import { Turnstile } from '@marsidev/react-turnstile';
+import { Turnstile, type TurnstileInstance } from '@marsidev/react-turnstile'
 
-import { motion } from 'motion/react';
-import { useState } from 'react';
+import { motion } from 'motion/react'
+import { useRef, useState } from 'react'
 import { Button } from '@/components/ui/button'
-import { z } from 'zod';
-import { useForm } from 'react-hook-form';
-import type { SubmitHandler } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { toast } from 'sonner';
+import { z } from 'zod'
+import { useForm } from 'react-hook-form'
+import type { SubmitHandler } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { toast } from 'sonner'
 // import { sendTelegramMessage } from '@/server/actions/submit-form'
 
 export const contactFormSchema = z.object({
@@ -30,6 +30,8 @@ export const contactFormSchema = z.object({
 export type ContactFields = z.infer<typeof contactFormSchema>
 
 const ContactForm = () => {
+  const turnstileRef = useRef<TurnstileInstance | null>(null)
+
   const {
     register,
     reset,
@@ -42,10 +44,12 @@ const ContactForm = () => {
   const [submitted, setSubmitted] = useState(false)
   const onSubmit: SubmitHandler<ContactFields> = async (data) => {
     try {
+      const token = turnstileRef.current?.getResponse()
       // const submitForm = await sendTelegramMessage(data)
       // if (!submitForm) throw new Error('Failed to submit form')
       toast.success('Form submitted successfully')
       setSubmitted(true)
+      turnstileRef.current?.reset() // Reset after submission
     } catch (e) {
       console.error(e)
       toast.error('Failed to submit form')
@@ -124,7 +128,8 @@ const ContactForm = () => {
         </div>
         <div className="">
           <Turnstile
-            siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
+            ref={turnstileRef}
+            siteKey={import.meta.env.VITE_TURNSTILE_SITE_KEY!}
             onSuccess={(token) =>
               setValue('turnstileToken', token, { shouldValidate: true })
             }
