@@ -2,7 +2,7 @@ import { IconContext } from 'react-icons'
 import type { Skill } from '@/data/index'
 import { mernStackSkills } from '@/data/index'
 
-import { Tabs } from '@heroui/react'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
 import { motion } from 'motion/react'
 
@@ -19,23 +19,19 @@ const SkillCards = () => {
       <div className="2xl:w-10/12 w-11/12 mx-auto dark">
         <Tabs
           className="flex justify-center"
-          variant="secondary"
-          defaultSelectedKey="0"
+          defaultValue="0"
         >
-          <Tabs.ListContainer className="xl:w-6/12 w-full mx-auto">
-            <Tabs.List aria-label="Skills">
-              {finalSkills.map((skillCategory, index) => (
-                <Tabs.Tab key={index} id={String(index)}>
-                  {skillCategory.category}
-                  <Tabs.Indicator className="bg-primary" />
-                </Tabs.Tab>
-              ))}
-            </Tabs.List>
-          </Tabs.ListContainer>
+          <TabsList variant={"line"} className="xl:w-6/12 w-full mx-auto">
+            {finalSkills.map((skillCategory, index) => (
+              <TabsTrigger key={index} value={String(index)}>
+                {skillCategory.category}
+              </TabsTrigger>
+            ))}
+          </TabsList>
           {finalSkills.map((skillCategory, index) => (
-            <Tabs.Panel key={index} id={String(index)}>
+            <TabsContent key={index} value={String(index)}>
               <SkillCardList skills={skillCategory.skills} />
-            </Tabs.Panel>
+            </TabsContent>
           ))}
         </Tabs>
       </div>
