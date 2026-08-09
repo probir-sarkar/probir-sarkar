@@ -10,6 +10,7 @@ import type { SubmitHandler } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { toast } from 'sonner'
 // import { sendTelegramMessage } from '@/server/actions/submit-form'
+import { env } from 'cloudflare:workers'
 
 export const contactFormSchema = z.object({
   name: z
@@ -129,7 +130,7 @@ const ContactForm = () => {
         <div className="">
           <Turnstile
             ref={turnstileRef}
-            siteKey={import.meta.env.VITE_TURNSTILE_SITE_KEY}
+            siteKey={env.VITE_TURNSTILE_SITE_KEY}
             onSuccess={(token) =>
               setValue('turnstileToken', token, { shouldValidate: true })
             }
