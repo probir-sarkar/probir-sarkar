@@ -6,6 +6,8 @@
   "main": "@tanstack/react-start/server-entry",
   "workers_dev": false,
   "preview_urls": false,
-  "keep_vars": true
+  "keep_vars": true,
+  "vars": {
+    "VITE_TURNSTILE_SITE_KEY": "0x4AAAAAACLogA9_sbEQhj5b",
+  },
 }
-
