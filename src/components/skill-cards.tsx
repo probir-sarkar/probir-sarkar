@@ -21,7 +21,7 @@ const SkillCards = () => {
           className="flex justify-center"
           defaultValue="0"
         >
-          <TabsList className="xl:w-6/12 w-full mx-auto">
+          <TabsList variant={"line"} className="xl:w-6/12 w-full mx-auto">
             {finalSkills.map((skillCategory, index) => (
               <TabsTrigger key={index} value={String(index)}>
                 {skillCategory.category}
