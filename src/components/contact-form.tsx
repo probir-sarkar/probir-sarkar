@@ -129,7 +129,7 @@ const ContactForm = () => {
         <div className="">
           <Turnstile
             ref={turnstileRef}
-            siteKey={import.meta.env.VITE_TURNSTILE_SITE_KEY!}
+            siteKey={import.meta.env.VITE_TURNSTILE_SITE_KEY}
             onSuccess={(token) =>
               setValue('turnstileToken', token, { shouldValidate: true })
             }
