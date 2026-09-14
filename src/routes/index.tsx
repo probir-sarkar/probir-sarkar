@@ -1,16 +1,20 @@
 // import ContactSection from '#/components/contact-section.tsx'
-import Button from '#/components/common/Button.tsx';
-import ContactSection from '#/components/contact-section.tsx';
-import HeroSkills from '#/components/hero-skills.tsx';
+import Button from '#/components/common/Button.tsx'
+import ContactSection from '#/components/contact-section.tsx'
+import HeroSkills from '#/components/hero-skills.tsx'
 import ProjectSection from '#/components/project-section.tsx'
 import SkillCards from '#/components/skill-cards.tsx'
-import { createFileRoute, Link } from '@tanstack/react-router'
+import AiChat from '#/components/ai-chat.tsx'
+import { ClientOnly, createFileRoute, Link } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/')({ component: App })
 
 function App() {
   return (
     <main className="page-wrap px-4 pb-8 pt-14">
+      <ClientOnly>
+        <AiChat />
+      </ClientOnly>
       <div>
         <section className="min-h-screen flex flex-col justify-between bg-radial to-75% bg-no-repeat from-indigo-900/50 to-transparent">
           <div className=""></div>
@@ -30,7 +34,9 @@ function App() {
             </p>
             <div className="flex justify-center mt-8">
               <Button variant="primary">
-                <Link to="." hash="contact">Contact Me</Link>
+                <Link to="." hash="contact">
+                  Contact Me
+                </Link>
               </Button>
             </div>
           </div>

@@ -17,6 +17,12 @@ const config = defineConfig({
       prerender: {
         enabled: true,
         crawlLinks: true,
+
+        // How many prerender jobs to run at once
+        concurrency: 14,
+
+        // Filter function takes the page object and returns whether it should prerender
+        filter: ({ path }) => !path.startsWith('/api'),
       },
     }),
     viteReact(),
