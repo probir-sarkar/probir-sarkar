@@ -2,6 +2,7 @@ import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
 import { Toaster } from 'sonner'
+import AiChat from '@/components/ai-chat'
 
 import appCss from '../styles.css?url'
 
@@ -54,6 +55,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <body className="font-sans antialiased wrap-anywhere bg-secondary">
         {children}
         <Toaster richColors />
+        <AiChat />
         <TanStackDevtools
           config={{
             position: 'bottom-right',
