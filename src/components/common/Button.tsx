@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { cn } from "@/libs/utils";
+import { cn } from "cn";
 
 type ButtonProps = {
   variant?: "primary" | "secondary" | "success" | "danger";
