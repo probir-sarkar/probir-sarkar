@@ -12,6 +12,7 @@ import { cn } from '@/lib/utils'
 export default function AiChat() {
   const [open, setOpen] = useState(false)
   const { messages, sendMessage, isLoading } = useChat({
+    threadId: 'probir-sarkar',
     connection: fetchServerSentEvents('/api/chat'),
     persistence: indexedDBPersistence(),
   })
