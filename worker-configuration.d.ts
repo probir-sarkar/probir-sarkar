@@ -3,6 +3,7 @@
 // Runtime types generated with workerd@1.20260730.1 2026-06-26 nodejs_compat
 interface __BaseEnv_Env {
 	AI: Ai;
+	DB: D1Database;
 	VITE_TURNSTILE_SITE_KEY: string;
 }
 declare namespace Cloudflare {

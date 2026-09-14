@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Shell(npx tsc --noEmit -p tsconfig.json 2 >& 1)"
+      "Shell(npx tsc --noEmit -p tsconfig.json 2 >& 1)",
+      "Shell(bun:*)"
     ],
     "deny": [],
     "defaultMode": "default"
