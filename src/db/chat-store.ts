@@ -11,14 +11,8 @@ export async function createChat(): Promise<string> {
   return id
 }
 
-export async function loadChat(
-  id: string
-): Promise<readonly unknown[]> {
-  const result = await db
-    .select()
-    .from(chats)
-    .where(eq(chats.id, id))
-    .limit(1)
+export async function loadChat(id: string): Promise<readonly unknown[]> {
+  const result = await db.select().from(chats).where(eq(chats.id, id)).limit(1)
 
   if (result.length === 0) {
     return []
