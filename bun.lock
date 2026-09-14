@@ -11,6 +11,7 @@
         "@marsidev/react-turnstile": "^1.5.5",
         "@tailwindcss/vite": "^4.1.18",
         "@tanstack/ai": "^0.44.1",
+        "@tanstack/ai-persistence": "^0.5.7",
         "@tanstack/ai-react": "^0.19.2",
         "@tanstack/react-devtools": "latest",
         "@tanstack/react-router": "latest",
@@ -503,6 +504,8 @@
     "@tanstack/ai-openai": ["@tanstack/ai-openai@0.19.0", "", { "dependencies": { "@tanstack/ai-utils": "^0.4.0", "@tanstack/openai-base": "^0.9.11", "openai": "^6.41.0" }, "peerDependencies": { "@tanstack/ai": "^0.44.0", "zod": "^4.0.0" } }, "sha512-qBPX45oDUdFjphVui9+qN62zxXZU6VgGI/MDxS5n0xhCz1X/RqLbwUmdefLSiyoHAh1gdw4lmpCdURYD/uMObQ=="],
 
     "@tanstack/ai-openrouter": ["@tanstack/ai-openrouter@0.17.0", "", { "dependencies": { "@openrouter/sdk": "0.13.20", "@tanstack/ai-utils": "^0.4.0" }, "peerDependencies": { "@tanstack/ai": "^0.44.1" } }, "sha512-rD0lljULNKyfY2DIFdWt6tvNzS4tHXr0IqT/GJ7dSMuYpRBZy033RtMcVsZW5h1O0g+1N4UG4QycccL0Rj124Q=="],
+
+    "@tanstack/ai-persistence": ["@tanstack/ai-persistence@0.5.7", "", { "dependencies": { "@tanstack/ai-utils": "^0.4.0" }, "peerDependencies": { "@tanstack/ai": "^0.54.0", "vitest": "^4.1.10" }, "optionalPeers": ["vitest"] }, "sha512-pN0NrC0FsXQIMIgrP9h98Q6oh4BhlWfyNz8FZCzlAwCKY5WGW1y9FMWSXDmQfq/xt2u8W6oicbRnL+HuKvnBZQ=="],
 
     "@tanstack/ai-react": ["@tanstack/ai-react@0.19.2", "", { "dependencies": { "@tanstack/ai-client": "^0.23.2" }, "peerDependencies": { "@mcp-ui/client": "^7", "@tanstack/ai": "^0.44.0", "@types/react": ">=18.0.0", "react": ">=18.0.0" }, "optionalPeers": ["@mcp-ui/client"] }, "sha512-5w5rLgHXT2gjVWrwjUar9c5is0MKZYphX51bjORW58/19s5xQCNUqCDeZluZAeTkhN3XSqo7L6ArpEJneVuJWw=="],
 

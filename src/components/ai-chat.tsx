@@ -1,18 +1,20 @@
 'use client'
-import { useChat, fetchServerSentEvents } from '@tanstack/ai-react'
+import {
+  useChat,
+  fetchServerSentEvents,
+  indexedDBPersistence,
+} from '@tanstack/ai-react'
 import { AnimatePresence, motion } from 'motion/react'
 import { useEffect, useRef, useState } from 'react'
 import { Bot, MessageSquare, Send, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
-const useChatInstance = () =>
-  useChat({
-    connection: fetchServerSentEvents('/api/chat'),
-  })
-
 export default function AiChat() {
   const [open, setOpen] = useState(false)
-  const { messages, sendMessage, isLoading } = useChatInstance()
+  const { messages, sendMessage, isLoading } = useChat({
+    connection: fetchServerSentEvents('/api/chat'),
+    persistence: indexedDBPersistence(),
+  })
   const [input, setInput] = useState('')
   const scrollRef = useRef<HTMLDivElement>(null)
 
