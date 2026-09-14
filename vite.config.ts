@@ -15,7 +15,7 @@ const config = defineConfig({
     tailwindcss(),
     tanstackStart({
       prerender: {
-        enabled: true,
+        enabled: false,
         crawlLinks: true,
 
         // How many prerender jobs to run at once
