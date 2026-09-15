@@ -1,0 +1,14 @@
+# User Taste Profile
+- Prefers clean, minimal code — explicitly asks to "clean minimal." Confidence: 0.9
+- Prefers inlining trivial/one-off components directly in config objects rather than creating separate named function declarations. Confidence: 0.85
+- Prefers removing unused imports to keep files lean. Confidence: 0.8
+- Keeps shared utility components (e.g. `ToolActivity`) when reused across multiple places — minimal but not at the cost of duplication. Confidence: 0.8
+- Works with TypeScript React (.tsx) files. Confidence: 0.9
+- Uses TanStack AI libraries (`@tanstack/ai-react/ui`, `@tanstack/ai-client`). Confidence: 0.9
+- Uses Tailwind CSS with shadcn/ui-style patterns (`cn()` utility, lucide-react icons, `bg-primary`, `text-muted-foreground`, etc.). Confidence: 0.9
+- Uses `motion/react` (Framer Motion) for animations. Confidence: 0.8
+- Wants code restructured to follow official library documentation patterns — will provide doc URLs for reference. Confidence: 0.85
+- Gives concise, terse instructions; expects the assistant to infer intent from minimal direction. Confidence: 0.8
+- Prefers mobile-first responsive design — UIs should work well on small/mobile widths by default. Confidence: 0.9
+- Avoids tables for layout — prefers responsive/flexible elements instead. Confidence: 0.9
+- Wants AI chatbot system prompts to be context-aware of UI constraints — instructs the LLM to adapt its output formatting (e.g. no tables, concise answers, bullet lists) to match the display container size. Confidence: 0.85
