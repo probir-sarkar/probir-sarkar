@@ -24,6 +24,7 @@ export const Route = createFileRoute('/api/chat')({
         const { messages, threadId, runId } =
           await chatParamsFromRequest(request)
         const adapter = openRouterText('openai/gpt-oss-20b')
+        console.log('messages', readme)
 
         const stream = chat({
           systemPrompts: [systemPrompt, readme],
