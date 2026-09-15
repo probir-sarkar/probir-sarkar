@@ -1,7 +1,6 @@
-import { FaLinkedin, FaGithubSquare, FaWhatsappSquare } from 'react-icons/fa'
-import { FaMedium } from 'react-icons/fa6'
 import ContactForm from './contact-form'
 import { Link } from '@tanstack/react-router'
+import { contactData } from '@/data'
 
 const ContactSection = () => {
   return (
@@ -18,46 +17,27 @@ const ContactSection = () => {
           <div className="space-y-6">
             <div className="grid gap-2">
               <h5 className={`text-xl font-semibold `}>Location</h5>
-              <p>Mohali, India</p>
+              <p>{contactData.location}</p>
             </div>
             <div className="grid gap-2">
               <h5 className={`text-xl font-semibold `}>Talk to me</h5>
               <div className="grid">
-                <Link to="." href="tel:+91-951-154-9471">
-                  +91-951-154-9471
+                <Link to="." href={`tel:${contactData.phone}`}>
+                  {contactData.phone}
                 </Link>
-                <Link to="." href="mailto:me@probirsarkar.com">
-                  me@probirsarkar.com
+                <Link to="." href={`mailto:${contactData.email}`}>
+                  {contactData.email}
                 </Link>
               </div>
             </div>
             <div className="grid gap-2">
               <h5 className={`text-xl font-semibold `}>Social</h5>
               <div className="flex gap-4">
-                <Link
-                  to="."
-                  href="https://www.linkedin.com/in/probir-sarkar"
-                  target="_blank"
-                >
-                  <FaLinkedin className="text-2xl" />
-                </Link>
-                <Link to="." href="https://wa.me/919511549471" target="_blank">
-                  <FaWhatsappSquare className="text-2xl" />
-                </Link>
-                <Link
-                  to="."
-                  href="https://github.com/probir-sarkar"
-                  target="_blank"
-                >
-                  <FaGithubSquare className="text-2xl" />
-                </Link>
-                <Link
-                  to="."
-                  href="https://blog.probirsarkar.com/"
-                  target="_blank"
-                >
-                  <FaMedium className="text-2xl" />
-                </Link>
+                {contactData.socials.map(({ name, url, icon: Icon }) => (
+                  <Link key={name} to="." href={url} target="_blank">
+                    <Icon className="text-2xl" />
+                  </Link>
+                ))}
               </div>
             </div>
           </div>
