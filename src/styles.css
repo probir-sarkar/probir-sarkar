@@ -4,6 +4,8 @@
 @import 'tw-animate-css';
 @import 'shadcn/tailwind.css';
 
+@plugin "@tailwindcss/typography";
+
 @theme {
   --color-primary: #00dc82 /* your color */;
   --color-secondary: #040621 /* your color */;

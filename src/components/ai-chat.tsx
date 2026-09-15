@@ -4,9 +4,7 @@ import {
   createChatHook,
   type LayoutProps,
   type MessageProps,
-  type PartProps,
   type QueueProps,
-  type ToolProps,
 } from '@tanstack/ai-react/ui'
 import { AnimatePresence, motion } from 'motion/react'
 import { useEffect, useRef, useState } from 'react'
@@ -20,11 +18,8 @@ import {
   X,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { Markdown } from '@tanstack/markdown/react'
 import { chatOptions } from '@/lib/chat-options'
-
-function ChatTextPart({ part }: PartProps<typeof chatOptions, 'text'>) {
-  return <span>{part.content}</span>
-}
 
 function ToolActivity({
   label,
@@ -55,30 +50,14 @@ function ToolActivity({
   )
 }
 
-function GetSkillsTool({ part }: ToolProps<typeof chatOptions, 'get_skills'>) {
-  return <ToolActivity label="skills" state={part.state} />
-}
-
-function GetProjectsTool({
-  part,
-}: ToolProps<typeof chatOptions, 'get_projects'>) {
-  return <ToolActivity label="projects" state={part.state} />
-}
-
-function GetContactTool({
-  part,
-}: ToolProps<typeof chatOptions, 'get_contact'>) {
-  return <ToolActivity label="contact details" state={part.state} />
-}
-
 function ChatMessage({ message, Parts }: MessageProps<typeof chatOptions>) {
   return (
     <div
       className={cn(
-        'max-w-[85%] rounded-2xl px-3 py-2 text-sm whitespace-pre-wrap',
+        'max-w-[85%] rounded-2xl px-3 py-2 text-sm whitespace-pre-wrap prose prose-sm ',
         message.role === 'user'
           ? 'ml-auto bg-primary text-primary-foreground'
-          : 'mr-auto bg-muted text-foreground',
+          : 'mr-auto bg-muted text-foreground dark:prose-invert',
       )}
     >
       <Parts />
@@ -136,7 +115,7 @@ function ChatInput() {
   const chat = useChatContext()
   const [value, setValue] = useState('')
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (!value.trim() || chat.isLoading) return
     void chat.sendMessage(value.trim())
@@ -193,13 +172,19 @@ const { useAppChat, useChatContext } = createChatHook({
     queue: ChatQueueItem,
   },
   partsComponents: {
-    text: ChatTextPart,
+    text: ({ part }) => <Markdown>{part.content}</Markdown>,
     fallback: () => null,
   },
   toolsComponents: {
-    get_skills: GetSkillsTool,
-    get_projects: GetProjectsTool,
-    get_contact: GetContactTool,
+    get_skills: ({ part }) => (
+      <ToolActivity label="skills" state={part.state} />
+    ),
+    get_projects: ({ part }) => (
+      <ToolActivity label="projects" state={part.state} />
+    ),
+    get_contact: ({ part }) => (
+      <ToolActivity label="contact details" state={part.state} />
+    ),
   },
 })
 
@@ -225,7 +210,7 @@ export default function AiChat() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 24, scale: 0.96 }}
             transition={{ duration: 0.2, ease: 'easeOut' }}
-            className="fixed bottom-24 right-6 z-50 flex h-140 w-95 max-w-[calc(100vw-3rem)] flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-2xl"
+            className="fixed inset-x-3 bottom-20 z-50 flex h-[70vh] max-h-[calc(100dvh-7rem)] flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-2xl sm:inset-x-auto sm:right-6 sm:bottom-24 sm:w-95 sm:h-140"
           >
             <div className="flex items-center gap-3 border-b border-border bg-primary px-4 py-3 text-secondary">
               <Bot className="size-5" />
