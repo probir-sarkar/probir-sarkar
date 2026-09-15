@@ -4,13 +4,11 @@ import {
   chatParamsFromRequest,
   toServerSentEventsResponse,
 } from '@tanstack/ai'
-import { createWorkersAiChat } from '@cloudflare/tanstack-ai'
-import { env } from 'cloudflare:workers'
+// import { createWorkersAiChat } from '@cloudflare/tanstack-ai'
+import { openRouterText } from '@tanstack/ai-openrouter'
+
 import { createFileRoute } from '@tanstack/react-router'
 import { evictOldest, withCompaction } from '@tanstack/ai-compaction'
-const adapter = createWorkersAiChat('@cf/openai/gpt-oss-20b', {
-  binding: env.AI,
-})
 
 export const Route = createFileRoute('/api/chat')({
   server: {
@@ -18,6 +16,7 @@ export const Route = createFileRoute('/api/chat')({
       POST: async ({ request }) => {
         const { messages, threadId, runId } =
           await chatParamsFromRequest(request)
+        const adapter = openRouterText('openai/gpt-oss-20b')
 
         const stream = chat({
           adapter: adapter,

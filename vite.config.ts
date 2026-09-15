@@ -15,14 +15,8 @@ const config = defineConfig({
     tailwindcss(),
     tanstackStart({
       prerender: {
-        enabled: false,
-        crawlLinks: true,
-
-        // How many prerender jobs to run at once
-        concurrency: 14,
-
-        // Filter function takes the page object and returns whether it should prerender
-        filter: ({ path }) => !path.startsWith('/api'),
+        enabled: true,
+        crawlLinks: false,
       },
     }),
     viteReact(),
