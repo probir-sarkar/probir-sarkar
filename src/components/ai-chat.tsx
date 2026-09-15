@@ -6,12 +6,12 @@ import {
 } from '@tanstack/ai-react'
 import { AnimatePresence, motion } from 'motion/react'
 import { useEffect, useRef, useState } from 'react'
-import { Bot, MessageSquare, Send, X } from 'lucide-react'
+import { Bot, MessageSquare, Send, Trash2, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 export default function AiChat() {
   const [open, setOpen] = useState(false)
-  const { messages, sendMessage, isLoading } = useChat({
+  const { messages, sendMessage, isLoading, clear } = useChat({
     threadId: 'probir-sarkar',
     connection: fetchServerSentEvents('/api/chat'),
     persistence: indexedDBPersistence(),
@@ -55,7 +55,7 @@ export default function AiChat() {
           >
             <div className="flex items-center gap-3 border-b border-border bg-primary px-4 py-3 text-secondary">
               <Bot className="size-5" />
-              <div>
+              <div className="flex-1">
                 <p className="text-sm font-semibold leading-tight">
                   AI Assistant
                 </p>
@@ -63,6 +63,17 @@ export default function AiChat() {
                   Ask me anything about my work
                 </p>
               </div>
+              {messages.length > 0 && (
+                <button
+                  type="button"
+                  aria-label="Clear conversation"
+                  onClick={() => clear()}
+                  disabled={isLoading}
+                  className="flex size-8 items-center justify-center rounded-lg transition-colors hover:bg-secondary/20 disabled:opacity-40"
+                >
+                  <Trash2 className="size-4" />
+                </button>
+              )}
             </div>
 
             <div
