@@ -6,13 +6,17 @@ import {
     FaStream,
     FaCogs,
     FaClock,
-    FaServer
+    FaServer,
+    FaLinkedin,
+    FaGithubSquare,
+    FaWhatsappSquare
 } from "react-icons/fa";
 import { TbBrandRedux } from "react-icons/tb";
 import { SiExpress, SiMongodb, SiNextdotjs, SiRedis, SiNestjs, SiDocker, SiLangchain } from "react-icons/si";
 import { BiLogoPostgresql, BiLogoJavascript, BiLogoTypescript } from "react-icons/bi";
 import type { IconType } from "react-icons";
 import { MdOutlineWorkspaces } from "react-icons/md";
+import { FaMedium } from "react-icons/fa6";
 
 export type Skill = {
   name: string;
@@ -23,6 +27,45 @@ export type Skill = {
 export type SkillCategory = {
   category: string;
   skills: Skill[];
+};
+
+export type SocialLink = {
+  name: string;
+  url: string;
+  icon: IconType;
+};
+
+export const contactData: {
+  location: string;
+  phone: string;
+  email: string;
+  socials: SocialLink[];
+} = {
+  location: "Mohali, India",
+  phone: "+91-951-154-9471",
+  email: "me@probirsarkar.com",
+  socials: [
+    {
+      name: "LinkedIn",
+      url: "https://www.linkedin.com/in/probir-sarkar",
+      icon: FaLinkedin,
+    },
+    {
+      name: "WhatsApp",
+      url: "https://wa.me/919511549471",
+      icon: FaWhatsappSquare,
+    },
+    {
+      name: "GitHub",
+      url: "https://github.com/probir-sarkar",
+      icon: FaGithubSquare,
+    },
+    {
+      name: "Blog",
+      url: "https://blog.probirsarkar.com/",
+      icon: FaMedium,
+    }
+  ]
 };
 
 export const mernStackSkills: SkillCategory[] = [
