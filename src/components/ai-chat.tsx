@@ -1,22 +1,98 @@
 'use client'
+import type { ToolCallState } from '@tanstack/ai-client'
 import {
-  useChat,
-  fetchServerSentEvents,
-  indexedDBPersistence,
-} from '@tanstack/ai-react'
+  createChatHook,
+  type LayoutProps,
+  type MessageProps,
+  type PartProps,
+  type QueueProps,
+  type ToolProps,
+} from '@tanstack/ai-react/ui'
 import { AnimatePresence, motion } from 'motion/react'
 import { useEffect, useRef, useState } from 'react'
-import { Bot, MessageSquare, Send, Trash2, X } from 'lucide-react'
+import {
+  Bot,
+  Check,
+  Loader2,
+  MessageSquare,
+  Send,
+  Trash2,
+  X,
+} from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { chatOptions } from '@/lib/chat-options'
 
-export default function AiChat() {
-  const [open, setOpen] = useState(false)
-  const { messages, sendMessage, isLoading, clear } = useChat({
-    threadId: 'probir-sarkar',
-    connection: fetchServerSentEvents('/api/chat'),
-    persistence: indexedDBPersistence(),
-  })
-  const [input, setInput] = useState('')
+function ChatTextPart({ part }: PartProps<typeof chatOptions, 'text'>) {
+  return <span>{part.content}</span>
+}
+
+function ToolActivity({
+  label,
+  state,
+}: {
+  label: string
+  state: ToolCallState
+}) {
+  const done = state === 'complete'
+  const failed = state === 'error'
+  return (
+    <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+      {failed ? (
+        <X className="size-3.5" />
+      ) : done ? (
+        <Check className="size-3.5" />
+      ) : (
+        <Loader2 className="size-3.5 animate-spin" />
+      )}
+      <span>
+        {failed
+          ? `Couldn't load ${label}`
+          : done
+            ? `Loaded ${label}`
+            : `Loading ${label}…`}
+      </span>
+    </div>
+  )
+}
+
+function GetSkillsTool({ part }: ToolProps<typeof chatOptions, 'get_skills'>) {
+  return <ToolActivity label="skills" state={part.state} />
+}
+
+function GetProjectsTool({
+  part,
+}: ToolProps<typeof chatOptions, 'get_projects'>) {
+  return <ToolActivity label="projects" state={part.state} />
+}
+
+function GetContactTool({
+  part,
+}: ToolProps<typeof chatOptions, 'get_contact'>) {
+  return <ToolActivity label="contact details" state={part.state} />
+}
+
+function ChatMessage({ message, Parts }: MessageProps<typeof chatOptions>) {
+  return (
+    <div
+      className={cn(
+        'max-w-[85%] rounded-2xl px-3 py-2 text-sm whitespace-pre-wrap',
+        message.role === 'user'
+          ? 'ml-auto bg-primary text-primary-foreground'
+          : 'mr-auto bg-muted text-foreground',
+      )}
+    >
+      <Parts />
+    </div>
+  )
+}
+
+function ChatLayout({
+  Messages,
+  Interrupts,
+  Queue,
+  Input,
+}: LayoutProps<typeof chatOptions>) {
+  const chat = useChatContext()
   const scrollRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -24,14 +100,112 @@ export default function AiChat() {
       top: scrollRef.current.scrollHeight,
       behavior: 'smooth',
     })
-  }, [messages])
+  }, [chat.messages, chat.isLoading])
+
+  return (
+    <>
+      <div ref={scrollRef} className="flex-1 space-y-4 overflow-y-auto p-4">
+        {chat.messages.length === 0 && !chat.isLoading && (
+          <p className="text-center text-sm text-muted-foreground">
+            Hi! I'm an AI assistant. Ask me about my projects, skills, or
+            anything else.
+          </p>
+        )}
+        <Messages />
+        <Interrupts />
+        {chat.isLoading && (
+          <div className="mr-auto flex items-center gap-1 rounded-2xl bg-muted px-3 py-2 text-sm text-muted-foreground">
+            <span className="size-1.5 animate-bounce rounded-full bg-current [animation-delay:-0.3s]" />
+            <span className="size-1.5 animate-bounce rounded-full bg-current [animation-delay:-0.15s]" />
+            <span className="size-1.5 animate-bounce rounded-full bg-current" />
+          </div>
+        )}
+        {chat.error && (
+          <p className="text-center text-xs text-destructive">
+            {chat.error.message}
+          </p>
+        )}
+      </div>
+      <Queue />
+      <Input />
+    </>
+  )
+}
+
+function ChatInput() {
+  const chat = useChatContext()
+  const [value, setValue] = useState('')
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    if (!input.trim() || isLoading) return
-    void sendMessage(input.trim())
-    setInput('')
+    if (!value.trim() || chat.isLoading) return
+    void chat.sendMessage(value.trim())
+    setValue('')
   }
+
+  return (
+    <form
+      onSubmit={handleSubmit}
+      className="flex items-center gap-2 border-t border-border p-3"
+    >
+      <input
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        placeholder="Type a message..."
+        className="h-10 flex-1 rounded-xl border border-input bg-background px-3 text-sm outline-none focus:border-ring focus:ring-2 focus:ring-ring/30"
+      />
+      <button
+        type="submit"
+        aria-label="Send message"
+        disabled={!value.trim() || chat.isLoading}
+        className="flex size-10 items-center justify-center rounded-xl bg-primary text-secondary transition-opacity disabled:opacity-40"
+      >
+        <Send className="size-4" />
+      </button>
+    </form>
+  )
+}
+
+function ChatQueueItem({ item }: QueueProps<typeof chatOptions>) {
+  const label =
+    typeof item.content === 'string' ? item.content : 'Queued message'
+  return (
+    <div className="flex items-center gap-2 border-t border-border bg-muted/40 px-3 py-2 text-xs text-muted-foreground">
+      <span className="flex-1 truncate">{label}</span>
+      <button
+        type="button"
+        aria-label="Cancel queued message"
+        onClick={() => item.cancelQueued()}
+        className="rounded p-1 transition-colors hover:bg-muted"
+      >
+        <X className="size-3" />
+      </button>
+    </div>
+  )
+}
+
+const { useAppChat, useChatContext } = createChatHook({
+  options: chatOptions,
+  components: {
+    input: ChatInput,
+    layout: ChatLayout,
+    message: ChatMessage,
+    queue: ChatQueueItem,
+  },
+  partsComponents: {
+    text: ChatTextPart,
+    fallback: () => null,
+  },
+  toolsComponents: {
+    get_skills: GetSkillsTool,
+    get_projects: GetProjectsTool,
+    get_contact: GetContactTool,
+  },
+})
+
+export default function AiChat() {
+  const [open, setOpen] = useState(false)
+  const chat = useAppChat({ threadId: 'probir-sarkar' })
 
   return (
     <>
@@ -63,12 +237,12 @@ export default function AiChat() {
                   Ask me anything about my work
                 </p>
               </div>
-              {messages.length > 0 && (
+              {chat.messages.length > 0 && (
                 <button
                   type="button"
                   aria-label="Clear conversation"
-                  onClick={() => clear()}
-                  disabled={isLoading}
+                  onClick={() => chat.clear()}
+                  disabled={chat.isLoading}
                   className="flex size-8 items-center justify-center rounded-lg transition-colors hover:bg-secondary/20 disabled:opacity-40"
                 >
                   <Trash2 className="size-4" />
@@ -76,61 +250,7 @@ export default function AiChat() {
               )}
             </div>
 
-            <div
-              ref={scrollRef}
-              className="flex-1 space-y-4 overflow-y-auto p-4"
-            >
-              {messages.length === 0 && (
-                <p className="text-center text-sm text-muted-foreground">
-                  Hi! I'm an AI assistant. Ask me about my projects, skills, or
-                  anything else.
-                </p>
-              )}
-              {messages.map((message) => (
-                <div
-                  key={message.id}
-                  className={cn(
-                    'max-w-[85%] rounded-2xl px-3 py-2 text-sm whitespace-pre-wrap',
-                    message.role === 'user'
-                      ? 'ml-auto bg-primary text-primary-foreground'
-                      : 'mr-auto bg-muted text-foreground',
-                  )}
-                >
-                  {message.parts.map((part, i) =>
-                    part.type === 'text' ? (
-                      <span key={i}>{part.content}</span>
-                    ) : null,
-                  )}
-                </div>
-              ))}
-              {isLoading && (
-                <div className="mr-auto flex items-center gap-1 rounded-2xl bg-muted px-3 py-2 text-sm text-muted-foreground">
-                  <span className="size-1.5 animate-bounce rounded-full bg-current [animation-delay:-0.3s]" />
-                  <span className="size-1.5 animate-bounce rounded-full bg-current [animation-delay:-0.15s]" />
-                  <span className="size-1.5 animate-bounce rounded-full bg-current" />
-                </div>
-              )}
-            </div>
-
-            <form
-              onSubmit={handleSubmit}
-              className="flex items-center gap-2 border-t border-border p-3"
-            >
-              <input
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                placeholder="Type a message..."
-                className="h-10 flex-1 rounded-xl border border-input bg-background px-3 text-sm outline-none focus:border-ring focus:ring-2 focus:ring-ring/30"
-              />
-              <button
-                type="submit"
-                aria-label="Send message"
-                disabled={!input.trim() || isLoading}
-                className="flex size-10 items-center justify-center rounded-xl bg-primary text-secondary transition-opacity disabled:opacity-40"
-              >
-                <Send className="size-4" />
-              </button>
-            </form>
+            <chat.AppChat />
           </motion.div>
         )}
       </AnimatePresence>
