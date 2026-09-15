@@ -34,8 +34,8 @@ export const Route = createFileRoute('/api/chat')({
           stream: true,
           middleware: [
             withCompaction({
-              maxTokens: 10_000,
-              strategy: evictOldest({ keepRecentTokens: 4000 }),
+              maxTokens: 20_000,
+              strategy: evictOldest({ keepRecentTokens: 10000 }),
             }),
           ],
           modelOptions: {
