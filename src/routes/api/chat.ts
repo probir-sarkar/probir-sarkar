@@ -41,7 +41,7 @@ export const Route = createFileRoute('/api/chat')({
       POST: async ({ request }) => {
         const { messages } = await chatParamsFromRequest(request)
 
-        const adapter = openRouterText('openai/gpt-oss-20b')
+        const adapter = openRouterText('mistralai/ministral-14b-2512')
 
         const stream = chat({
           systemPrompts: [systemPrompt, readme],
@@ -56,10 +56,7 @@ export const Route = createFileRoute('/api/chat')({
             }),
           ],
           modelOptions: {
-            provider: {
-              order: ['amazon-bedrock', 'groq'],
-              allowFallbacks: true,
-            },
+            models: ['openai/gpt-oss-20b'],
           },
         })
 
