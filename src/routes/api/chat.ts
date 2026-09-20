@@ -41,7 +41,7 @@ export const Route = createFileRoute('/api/chat')({
       POST: async ({ request }) => {
         const { messages } = await chatParamsFromRequest(request)
 
-        const adapter = openRouterText('google/gemma-4-31b-it')
+        const adapter = openRouterText('qwen/qwen3.8-flash')
 
         const stream = chat({
           systemPrompts: [systemPrompt, readme],
@@ -56,10 +56,11 @@ export const Route = createFileRoute('/api/chat')({
             }),
           ],
           modelOptions: {
-            provider: {
-              order: ['deepinfra/turbo'],
-            },
             models: ['openai/gpt-oss-20b'],
+            reasoning:{
+              effort:"low",
+              summary:"auto"
+            }
           },
         })
 
