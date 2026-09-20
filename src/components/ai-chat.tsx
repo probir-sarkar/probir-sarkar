@@ -8,6 +8,7 @@ import {
   TextPart,
   type LayoutProps,
   type MessageProps,
+  type PartProps,
   type QueueProps,
 } from '@tanstack/ai-react/ui'
 import {
@@ -21,6 +22,18 @@ import {
 } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
 import { useEffect, useRef, useState } from 'react'
+
+// A simple thinking part renderer
+function ThinkingPartComponent({
+  part,
+}: PartProps<typeof chatOptions, 'thinking'>) {
+  return (
+    <details className="text-xs text-muted-foreground">
+      <summary className="cursor-pointer select-none">Thinking…</summary>
+      <pre className="mt-1 whitespace-pre-wrap">{part.content}</pre>
+    </details>
+  )
+}
 
 function ToolActivity({
   label,
@@ -185,6 +198,7 @@ const { useAppChat, useChatContext } = createChatHook({
       />
     ),
     fallback: () => null,
+    thinking: ({ part }) => <ThinkingPartComponent part={part} />,
   },
   toolsComponents: {
     get_skills: ({ part }) => (
