@@ -1,7 +1,7 @@
 // src/routes/api/verify.ts
 import { createFileRoute } from '@tanstack/react-router'
 import { env } from 'cloudflare:workers'
-import { startChatSession } from '@/lib/chat-session'
+import { startChatSession } from '@/server/session'
 
 const TURNSTILE_ACTION = 'chat'
 

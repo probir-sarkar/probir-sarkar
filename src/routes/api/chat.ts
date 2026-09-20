@@ -11,7 +11,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { evictOldest, withCompaction } from '@tanstack/ai-compaction'
 import readme from '../../../README.md?raw'
 import { aiTools } from '@/lib/ai-tools'
-import { hasChatSession } from '@/lib/chat-session'
+import { authMiddleware } from '@/server/auth-middleware'
 
 const systemPrompt = `You are a friendly, knowledgeable AI assistant on Probir Sarkar's portfolio website. You speak like a helpful colleague — warm, concise, and confident without being pushy.
 
@@ -36,19 +36,9 @@ FORMATTING (this is a narrow popup widget)
 
 export const Route = createFileRoute('/api/chat')({
   server: {
+    middleware: [authMiddleware],
     handlers: {
       POST: async ({ request }) => {
-        if (!(await hasChatSession()))
-          return new Response(
-            JSON.stringify({
-              error: 'Human verification required. Please try again.',
-            }),
-            {
-              status: 403,
-              headers: { 'Content-Type': 'application/json' },
-            },
-          )
-
         const { messages } = await chatParamsFromRequest(request)
 
         const adapter = openRouterText('openai/gpt-oss-20b')

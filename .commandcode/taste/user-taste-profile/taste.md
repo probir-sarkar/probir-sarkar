@@ -17,3 +17,5 @@
 - Project is a Cloudflare Workers app configured via `wrangler.jsonc`, using KV namespaces (e.g. `CHAT_SESSIONS`) for server-side session state. Confidence: 0.7
 - Project is a Bun-based TS project (e.g. `bunx tsc --noEmit` for typechecking). Confidence: 0.7
 - Wants AI chatbot system prompts to be context-aware of UI constraints — instructs the LLM to adapt its output formatting (e.g. no tables, concise answers, bullet lists) to match the display container size. Confidence: 0.85
+- Organizes server-only code in a dedicated `src/server/` directory — states "anything related server put in server is the best practice," rather than leaving server modules in `src/lib/`. Confidence: 0.8
+- Prefers reusing existing shared modules/helpers instead of reimplementing the same logic in a new file (e.g. import shared session helpers rather than duplicating cookie read/write). Confidence: 0.75
