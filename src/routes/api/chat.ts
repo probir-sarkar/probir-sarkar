@@ -36,14 +36,27 @@ FORMATTING (this is a narrow popup widget)
 
 const TURNSTILE_ACTION = 'chat'
 
+interface TurnstileVerifyResult {
+  success: boolean
+  action?: string
+  hostname?: string
+  'error-codes'?: Array<string>
+}
+
 async function verifyTurnstileToken(
   token: string | undefined,
   ip: string | null,
 ): Promise<boolean> {
   if (!token || token.length > 2048) return false
 
+  const secret = env.TURNSTILE_SECRET
+  if (!secret) {
+    console.error('[chat] TURNSTILE_SECRET is not configured')
+    return false
+  }
+
   const body = new URLSearchParams({
-    secret: env.TURNSTILE_SECRET,
+    secret,
     response: token,
   })
   if (ip) body.set('remoteip', ip)
@@ -60,8 +73,30 @@ async function verifyTurnstileToken(
     )
     if (!response.ok) return false
 
-    const result = await response.json<{ success: boolean; action?: string }>()
-    return result.success && result.action === TURNSTILE_ACTION
+    const result = await response.json<TurnstileVerifyResult>()
+    if (!result.success) {
+      console.error(
+        '[chat] Turnstile verification failed:',
+        result['error-codes']?.join(', '),
+      )
+      return false
+    }
+    if (result.action !== TURNSTILE_ACTION) return false
+
+    const allowedHostnames = env.TURNSTILE_HOSTNAMES?.split(',')
+      .map((h) => h.trim().toLowerCase())
+      .filter(Boolean)
+    if (
+      allowedHostnames &&
+      allowedHostnames.length > 0 &&
+      result.hostname &&
+      !allowedHostnames.includes(result.hostname.toLowerCase())
+    ) {
+      console.error('[chat] Turnstile hostname mismatch:', result.hostname)
+      return false
+    }
+
+    return true
   } catch {
     return false
   }
@@ -71,17 +106,34 @@ export const Route = createFileRoute('/api/chat')({
   server: {
     handlers: {
       POST: async ({ request }) => {
-        const { messages, forwardedProps } =
-          await chatParamsFromRequest(request)
+        let params: Awaited<ReturnType<typeof chatParamsFromRequest>>
+        try {
+          params = await chatParamsFromRequest(request)
+        } catch {
+          return new Response('Bad Request', { status: 400 })
+        }
+        const { messages, forwardedProps } = params
         const turnstileToken =
           typeof forwardedProps?.turnstileToken === 'string'
             ? forwardedProps.turnstileToken
             : undefined
         const verified = await verifyTurnstileToken(
           turnstileToken,
-          request.headers.get('cf-connecting-ip'),
+          request.headers.get('cf-connecting-ip') ??
+            request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ??
+            null,
         )
-        if (!verified) return new Response('forbidden', { status: 403 })
+        if (!verified)
+          return new Response(
+            JSON.stringify({
+              error:
+                'Human verification failed. Please complete the challenge and try again.',
+            }),
+            {
+              status: 403,
+              headers: { 'Content-Type': 'application/json' },
+            },
+          )
         const adapter = openRouterText('openai/gpt-oss-20b')
 
         const stream = chat({

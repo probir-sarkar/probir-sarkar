@@ -124,10 +124,18 @@ function ChatInput() {
     token: '',
     error: '',
   })
+  const siteKey = import.meta.env.VITE_TURNSTILE_SITE_KEY as string | undefined
 
   const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault()
-    if (!value.trim() || chat.isLoading || !turnstile.token) return
+    if (!value.trim() || chat.isLoading) return
+    if (!siteKey || !turnstile.token) {
+      setTurnstile((prev) => ({
+        ...prev,
+        error: 'Please complete the verification before sending.',
+      }))
+      return
+    }
     void chat.sendMessage(value.trim(), {
       body: {
         turnstileToken: turnstile.token,
@@ -152,7 +160,7 @@ function ChatInput() {
       <button
         type="submit"
         aria-label="Send message"
-        disabled={!value.trim() || chat.isLoading}
+        disabled={!value.trim() || chat.isLoading || !turnstile.token}
         className="flex size-10 items-center justify-center rounded-xl bg-primary text-secondary transition-opacity disabled:opacity-40"
       >
         <Send className="size-4" />
@@ -163,33 +171,37 @@ function ChatInput() {
         </p>
       )}
       <div className="shrink-0 w-11/12 mx-auto">
-        <Turnstile
-          onSuccess={(token) => {
-            setTurnstile({ token, error: '' })
-          }}
-
-          onError={() => {
-            setTurnstile({
-              token: '',
-              error: "We couldn't verify you as a human. Please try again.",
-            })
-          }}
-
-          onExpire={() => {
-            setTurnstile({
-              token: '',
-              error: '',
-            })
-          }}
-          options={{
-            theme: 'dark',
-            size: 'flexible',
-            appearance: 'interaction-only',
-            action: 'chat',
-          }}
-          ref={turnstileRef}
-          siteKey="0x4AAAAAAE9e8lm-_CAJcAhd"
-        />
+        {!siteKey ? (
+          <p className="text-center text-xs text-destructive">
+            Verification is currently unavailable. Please try again later.
+          </p>
+        ) : (
+          <Turnstile
+            onSuccess={(token) => {
+              setTurnstile({ token, error: '' })
+            }}
+            onError={() => {
+              setTurnstile({
+                token: '',
+                error: "We couldn't verify you as a human. Please try again.",
+              })
+            }}
+            onExpire={() => {
+              setTurnstile({
+                token: '',
+                error: 'Verification expired. Please verify again.',
+              })
+            }}
+            options={{
+              theme: 'dark',
+              size: 'flexible',
+              appearance: 'interaction-only',
+              action: 'chat',
+            }}
+            ref={turnstileRef}
+            siteKey={siteKey}
+          />
+        )}
       </div>
     </form>
   )
