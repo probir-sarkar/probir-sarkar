@@ -128,7 +128,11 @@ function ChatInput() {
   const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (!value.trim() || chat.isLoading || !turnstile.token) return
-    void chat.sendMessage(value.trim())
+    void chat.sendMessage(value.trim(), {
+      body: {
+        turnstileToken: turnstile.token,
+      },
+    })
     setValue('')
     setTurnstile({ token: '', error: '' })
     turnstileRef.current?.reset()
