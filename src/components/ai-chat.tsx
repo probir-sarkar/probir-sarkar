@@ -2,6 +2,7 @@
 import type { ToolCallState } from '@tanstack/ai-client'
 import {
   createChatHook,
+  TextPart,
   type LayoutProps,
   type MessageProps,
   type QueueProps,
@@ -18,7 +19,6 @@ import {
   X,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import { Markdown } from '@tanstack/markdown/react'
 import { chatOptions } from '@/lib/chat-options'
 
 function ToolActivity({
@@ -54,10 +54,10 @@ function ChatMessage({ message, Parts }: MessageProps<typeof chatOptions>) {
   return (
     <div
       className={cn(
-        'max-w-[85%] rounded-2xl px-3 py-2 text-sm whitespace-pre-wrap prose prose-sm ',
+        'max-w-[85%] rounded-2xl px-3 py-2 group',
         message.role === 'user'
-          ? 'ml-auto bg-primary text-primary-foreground'
-          : 'mr-auto bg-muted text-foreground dark:prose-invert',
+          ? 'ml-auto bg-primary  light'
+          : 'mr-auto bg-muted dark',
       )}
     >
       <Parts />
@@ -172,7 +172,17 @@ const { useAppChat, useChatContext } = createChatHook({
     queue: ChatQueueItem,
   },
   partsComponents: {
-    text: ({ part }) => <Markdown>{part.content}</Markdown>,
+    text: ({ part }) => (
+      <TextPart
+        content={part.content}
+        className={
+          'prose prose-sm group-[.light]:prose-gray group-[.dark]:prose-invert'
+        }
+        components={{
+          a: (props) => <a {...props} target="_blank" rel="noreferrer" />,
+        }}
+      />
+    ),
     fallback: () => null,
   },
   toolsComponents: {
