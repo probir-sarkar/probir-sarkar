@@ -1,4 +1,8 @@
 'use client'
+import { chatOptions } from '@/lib/chat-options'
+import { cn } from '@/lib/utils'
+import type { TurnstileInstance } from '@marsidev/react-turnstile'
+import { Turnstile } from '@marsidev/react-turnstile'
 import type { ToolCallState } from '@tanstack/ai-client'
 import {
   createChatHook,
@@ -7,8 +11,6 @@ import {
   type MessageProps,
   type QueueProps,
 } from '@tanstack/ai-react/ui'
-import { AnimatePresence, motion } from 'motion/react'
-import { useEffect, useRef, useState } from 'react'
 import {
   Bot,
   Check,
@@ -18,8 +20,8 @@ import {
   Trash2,
   X,
 } from 'lucide-react'
-import { cn } from '@/lib/utils'
-import { chatOptions } from '@/lib/chat-options'
+import { AnimatePresence, motion } from 'motion/react'
+import { useEffect, useRef, useState } from 'react'
 
 function ToolActivity({
   label,
@@ -112,20 +114,30 @@ function ChatLayout({
 }
 
 function ChatInput() {
+  const turnstileRef = useRef<TurnstileInstance | null>(null)
   const chat = useChatContext()
   const [value, setValue] = useState('')
+  const [turnstile, setTurnstile] = useState<{
+    token: string
+    error: string
+  }>({
+    token: '',
+    error: '',
+  })
 
   const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault()
-    if (!value.trim() || chat.isLoading) return
+    if (!value.trim() || chat.isLoading || !turnstile.token) return
     void chat.sendMessage(value.trim())
     setValue('')
+    setTurnstile({ token: '', error: '' })
+    turnstileRef.current?.reset()
   }
 
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex items-center gap-2 border-t border-border p-3"
+      className="flex flex-wrap items-center gap-2 border-t border-border p-3"
     >
       <input
         value={value}
@@ -141,6 +153,40 @@ function ChatInput() {
       >
         <Send className="size-4" />
       </button>
+      {turnstile.error && (
+        <p className="text-center text-xs text-destructive">
+          {turnstile.error}
+        </p>
+      )}
+      <div className="shrink-0 w-11/12 mx-auto">
+        <Turnstile
+          onSuccess={(token) => {
+            setTurnstile({ token, error: '' })
+          }}
+
+          onError={() => {
+            setTurnstile({
+              token: '',
+              error: "We couldn't verify you as a human. Please try again.",
+            })
+          }}
+
+          onExpire={() => {
+            setTurnstile({
+              token: '',
+              error: '',
+            })
+          }}
+          options={{
+            theme: 'dark',
+            size: 'flexible',
+            appearance: 'interaction-only',
+            action: 'chat',
+          }}
+          ref={turnstileRef}
+          siteKey="0x4AAAAAAE9e8lm-_CAJcAhd"
+        />
+      </div>
     </form>
   )
 }
