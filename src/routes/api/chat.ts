@@ -41,7 +41,7 @@ export const Route = createFileRoute('/api/chat')({
       POST: async ({ request }) => {
         const { messages } = await chatParamsFromRequest(request)
 
-        const adapter = openRouterText('mistralai/ministral-14b-2512')
+        const adapter = openRouterText('google/gemma-4-31b-it')
 
         const stream = chat({
           systemPrompts: [systemPrompt, readme],
@@ -56,6 +56,9 @@ export const Route = createFileRoute('/api/chat')({
             }),
           ],
           modelOptions: {
+            provider: {
+              order: ['deepinfra/turbo'],
+            },
             models: ['openai/gpt-oss-20b'],
           },
         })
