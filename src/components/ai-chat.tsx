@@ -2,73 +2,24 @@
 import { chatOptions } from '@/lib/chat-options'
 import { cn } from '@/lib/utils'
 import { Turnstile } from '@marsidev/react-turnstile'
-import type { ToolCallState } from '@tanstack/ai-client'
 import {
   createChatHook,
   TextPart,
   type LayoutProps,
   type MessageProps,
-  type PartProps,
   type QueueProps,
 } from '@tanstack/ai-react/ui'
-import {
-  Bot,
-  Check,
-  Loader2,
-  MessageSquare,
-  Send,
-  Trash2,
-  X,
-} from 'lucide-react'
+import { Bot, MessageSquare, Send, Trash2, X } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
 import { useEffect, useRef, useState } from 'react'
-
-// A simple thinking part renderer
-function ThinkingPartComponent({
-  part,
-}: PartProps<typeof chatOptions, 'thinking'>) {
-  return (
-    <details className="text-xs text-muted-foreground">
-      <summary className="cursor-pointer select-none">Thinking…</summary>
-      <pre className="mt-1 whitespace-pre-wrap">{part.content}</pre>
-    </details>
-  )
-}
-
-function ToolActivity({
-  label,
-  state,
-}: {
-  label: string
-  state: ToolCallState
-}) {
-  const done = state === 'complete'
-  const failed = state === 'error'
-  return (
-    <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
-      {failed ? (
-        <X className="size-3.5" />
-      ) : done ? (
-        <Check className="size-3.5" />
-      ) : (
-        <Loader2 className="size-3.5 animate-spin" />
-      )}
-      <span>
-        {failed
-          ? `Couldn't load ${label}`
-          : done
-            ? `Loaded ${label}`
-            : `Loading ${label}…`}
-      </span>
-    </div>
-  )
-}
+import { ThinkingPart } from '@/components/thinking-part'
+import { ToolActivity } from '@/components/tool-activity'
 
 function ChatMessage({ message, Parts }: MessageProps<typeof chatOptions>) {
   return (
     <div
       className={cn(
-        'max-w-[85%] rounded-2xl px-3 py-2 group',
+        'max-w-[85%] rounded-2xl px-3 pt-1 pb-2 group',
         message.role === 'user'
           ? 'ml-auto bg-primary  light'
           : 'mr-auto bg-muted dark',
@@ -190,7 +141,7 @@ const { useAppChat, useChatContext } = createChatHook({
       <TextPart
         content={part.content}
         className={
-          'prose prose-sm group-[.light]:prose-gray group-[.dark]:prose-invert'
+          'mt-1 prose prose-sm group-[.light]:prose-gray group-[.dark]:prose-invert'
         }
         components={{
           a: (props) => <a {...props} target="_blank" rel="noreferrer" />,
@@ -198,7 +149,7 @@ const { useAppChat, useChatContext } = createChatHook({
       />
     ),
     fallback: () => null,
-    thinking: ({ part }) => <ThinkingPartComponent part={part} />,
+    thinking: ({ part }) => <ThinkingPart part={part} />,
   },
   toolsComponents: {
     get_skills: ({ part }) => (
