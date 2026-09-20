@@ -4,13 +4,14 @@ import {
   chatParamsFromRequest,
   toServerSentEventsResponse,
 } from '@tanstack/ai'
-// import { createWorkersAiChat } from '@cloudflare/tanstack-ai'
+
 import { openRouterText } from '@tanstack/ai-openrouter'
 
 import { createFileRoute } from '@tanstack/react-router'
 import { evictOldest, withCompaction } from '@tanstack/ai-compaction'
 import readme from '../../../README.md?raw'
 import { aiTools } from '@/lib/ai-tools'
+import { env } from 'cloudflare:workers'
 
 const systemPrompt = `You are a friendly, knowledgeable AI assistant on Probir Sarkar's portfolio website. You speak like a helpful colleague — warm, concise, and confident without being pushy.
 
@@ -33,12 +34,54 @@ FORMATTING (this is a narrow popup widget)
 - Keep lists short: 3-5 bullets per group, one idea per bullet.
 - Keep responses concise — this is a chat popup, not a full page.`
 
+const TURNSTILE_ACTION = 'chat'
+
+async function verifyTurnstileToken(
+  token: string | undefined,
+  ip: string | null,
+): Promise<boolean> {
+  if (!token || token.length > 2048) return false
+
+  const body = new URLSearchParams({
+    secret: env.TURNSTILE_SECRET,
+    response: token,
+  })
+  if (ip) body.set('remoteip', ip)
+
+  try {
+    const response = await fetch(
+      'https://challenges.cloudflare.com/turnstile/v0/siteverify',
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        signal: AbortSignal.timeout(10_000),
+        body,
+      },
+    )
+    if (!response.ok) return false
+
+    const result = await response.json<{ success: boolean; action?: string }>()
+    return result.success && result.action === TURNSTILE_ACTION
+  } catch {
+    return false
+  }
+}
+
 export const Route = createFileRoute('/api/chat')({
   server: {
     handlers: {
       POST: async ({ request }) => {
-        const { messages, threadId, runId } =
+        const { messages, forwardedProps } =
           await chatParamsFromRequest(request)
+        const turnstileToken =
+          typeof forwardedProps?.turnstileToken === 'string'
+            ? forwardedProps.turnstileToken
+            : undefined
+        const verified = await verifyTurnstileToken(
+          turnstileToken,
+          request.headers.get('cf-connecting-ip'),
+        )
+        if (!verified) return new Response('forbidden', { status: 403 })
         const adapter = openRouterText('openai/gpt-oss-20b')
 
         const stream = chat({

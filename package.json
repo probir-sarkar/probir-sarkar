@@ -20,7 +20,7 @@
   "dependencies": {
     "@base-ui/react": "^1.8.0",
     "@hookform/resolvers": "^5.9.1",
-    "@marsidev/react-turnstile": "^1.6.1",
+    "@marsidev/react-turnstile": "1.6.1",
     "@tailwindcss/vite": "^4.3.3",
     "@tanstack/ai": "^0.54.0",
     "@tanstack/ai-compaction": "^0.1.2",
