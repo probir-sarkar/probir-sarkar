@@ -1,5 +1,4 @@
 import ContactForm from './contact-form'
-import { Link } from '@tanstack/react-router'
 import { contactData } from '@/data'
 
 const ContactSection = () => {
@@ -22,21 +21,23 @@ const ContactSection = () => {
             <div className="grid gap-2">
               <h5 className={`text-xl font-semibold `}>Talk to me</h5>
               <div className="grid">
-                <Link to="." href={`tel:${contactData.phone}`}>
-                  {contactData.phone}
-                </Link>
-                <Link to="." href={`mailto:${contactData.email}`}>
-                  {contactData.email}
-                </Link>
+                <a href={`tel:${contactData.phone}`}>{contactData.phone}</a>
+                <a href={`mailto:${contactData.email}`}>{contactData.email}</a>
               </div>
             </div>
             <div className="grid gap-2">
               <h5 className={`text-xl font-semibold `}>Social</h5>
               <div className="flex gap-4">
                 {contactData.socials.map(({ name, url, icon: Icon }) => (
-                  <Link key={name} to="." href={url} target="_blank">
+                  <a
+                    key={name}
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={name}
+                  >
                     <Icon className="text-2xl" />
-                  </Link>
+                  </a>
                 ))}
               </div>
             </div>
