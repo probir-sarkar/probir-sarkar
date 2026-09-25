@@ -1,5 +1,4 @@
 // import ContactSection from '#/components/contact-section.tsx'
-import Button from '#/components/common/Button.tsx'
 import ContactSection from '#/components/contact-section.tsx'
 import HeroSkills from '#/components/hero-skills.tsx'
 import ProjectSection from '#/components/project-section.tsx'
@@ -33,11 +32,13 @@ function App() {
               Express, React and Node.js).
             </p>
             <div className="flex justify-center mt-8">
-              <Button variant="primary">
-                <Link to="." hash="contact">
-                  Contact Me
-                </Link>
-              </Button>
+              <Link
+                to="/"
+                hash="contact"
+                className="px-4 py-2 rounded-md font-medium transition duration-300 bg-primary text-black hover:bg-transparent border-2 border-primary hover:text-white"
+              >
+                Contact Me
+              </Link>
             </div>
           </div>
           <HeroSkills />
