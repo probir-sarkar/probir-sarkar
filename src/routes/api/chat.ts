@@ -41,7 +41,7 @@ export const Route = createFileRoute('/api/chat')({
       POST: async ({ request }) => {
         const { messages } = await chatParamsFromRequest(request)
 
-        const adapter = openRouterText('qwen/qwen3.8-flash')
+        const adapter = openRouterText('openai/gpt-6-luna')
 
         const stream = chat({
           systemPrompts: [systemPrompt, readme],
