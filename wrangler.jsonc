@@ -22,4 +22,5 @@
       "migrations_pattern": "drizzle/migrations/*/migration.sql",
     },
   ],
+  "ai": { "binding": "AI", "remote": true },
 }

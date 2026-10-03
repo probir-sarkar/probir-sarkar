@@ -6,12 +6,15 @@ import {
 } from '@tanstack/ai'
 
 import { openRouterText } from '@tanstack/ai-openrouter'
+import type { Ai } from '@cloudflare/workers-types'
 
 import { createFileRoute } from '@tanstack/react-router'
 import { evictOldest, withCompaction } from '@tanstack/ai-compaction'
 import readme from '../../../README.md?raw'
 import { aiTools } from '@/lib/ai-tools'
 import { authMiddleware } from '@/server/auth-middleware'
+import { createCloudflareText } from '@tanstack/ai-cloudflare'
+import { env } from 'cloudflare:workers'
 
 const systemPrompt = `You are a friendly, knowledgeable AI assistant on Probir Sarkar's portfolio website. You speak like a helpful colleague — warm, concise, and confident without being pushy.
 
@@ -41,7 +44,11 @@ export const Route = createFileRoute('/api/chat')({
       POST: async ({ request }) => {
         const { messages } = await chatParamsFromRequest(request)
 
-        const adapter = openRouterText('openai/gpt-6-luna')
+        // const adapter = openRouterText('qwen/qwen3.8-flash')
+        const ai = env.AI as unknown as Ai
+        const adapter = createCloudflareText('@cf/zai-org/glm-5.3-flash', {
+          binding: ai,
+        })
 
         const stream = chat({
           systemPrompts: [systemPrompt, readme],
@@ -55,13 +62,6 @@ export const Route = createFileRoute('/api/chat')({
               strategy: evictOldest({ keepRecentTokens: 10000 }),
             }),
           ],
-          modelOptions: {
-            models: ['openai/gpt-oss-20b'],
-            reasoning:{
-              effort:"low",
-              summary:"auto"
-            }
-          },
         })
 
         return toServerSentEventsResponse(stream)

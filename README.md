@@ -42,42 +42,46 @@ My experience spans multiple industries where I've successfully integrated APIs,
 
 ## Experience
 
-### Front-end Developer | AG Technologies
-*Jul 2024 - Present*
+### Technical Lead | AG Technologies
+*Nov 2025 - Present · Mohali, India (On-site)*
 
-**Technologies:** React.js, Next.js, TanStack (Start, Query, Router), Tailwind CSS, GitHub Actions
+- Leading technology strategy and managing technical staff.
 
-**AWS Services:** EC2, S3, RDS, Amplify, CloudFront, CloudWatch
+### Frontend Developer | AG Technologies
+*Jul 2024 - Present · Mohali, India (On-site)*
 
-- Optimized API calls by implementing caching, resulting in a 20% decrease in load times
+- Focused on React.js and modern front-end development.
 
 ---
 
 ### Backend Developer | Girl Power Talk
-*Apr 2023 - Jun 2024*
+*May 2023 - Jun 2024 · Chandigarh, India (On-site)*
 
-**Technologies:** Next.js, Node.js, PostgreSQL, Redis, AWS
+**Technologies:** MongoDB, Express.js, React, Node.js, Next.js, Tailwind CSS, Redux, Redis
 
-- Led development of horizontally scalable applications
-- Improved image and page load times by leveraging AWS CloudFront and Redis
+- Built full-stack solutions using the MERN stack.
+- Managed AWS infrastructure, including Elastic Beanstalk, IAM, S3, and email servers.
+- Implemented GitHub CI/CD pipelines, Redis caching, and JWT-based authentication.
+- Developed front ends with Next.js, React, Tailwind CSS, and Redux.
 
 ---
 
 ### Junior Web Developer | Pretrendy Solution
-*Dec 2021 - Mar 2022*
+*Dec 2021 - Mar 2022 · Kolkata, West Bengal (Remote)*
 
 **Technologies:** PHP, MySQL, WordPress, Bootstrap
 
-- Enhanced user engagement and improved SEO, resulting in a 15% decrease in bounce rate
+- Created responsive UI components using HTML, CSS, JavaScript, and Bootstrap.
+- Developed dynamic web functionality with PHP, MySQL, and WordPress (DIVI theme).
 
 ---
 
 ### Web Development Intern | EcomNuts
-*Sep 2019 - Nov 2019*
+*Sep 2019 - Nov 2019 · Kolkata, West Bengal (On-site)*
 
 **Technologies:** WordPress, DIVI Builder, Canva
 
-- Reduced page development time by 50% through efficient tool utilization
+- Maintained WordPress websites, implemented front-end redesigns, and optimized page load speeds.
 
 ---
 

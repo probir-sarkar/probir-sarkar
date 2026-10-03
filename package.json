@@ -23,6 +23,7 @@
     "@marsidev/react-turnstile": "1.6.1",
     "@tailwindcss/vite": "^4.3.3",
     "@tanstack/ai": "^0.64.0",
+    "@tanstack/ai-cloudflare": "^0.2.2",
     "@tanstack/ai-compaction": "^0.1.12",
     "@tanstack/ai-openrouter": "^0.20.2",
     "@tanstack/ai-persistence": "^0.7.2",
