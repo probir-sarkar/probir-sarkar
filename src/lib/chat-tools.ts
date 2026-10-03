@@ -5,12 +5,7 @@ export const getSkillsDefinition = toolDefinition({
   name: 'get_skills',
   description:
     "Get Probir Sarkar's skills grouped by category (Frontend, Backend, Database, AI / LLM, Other). Use this to answer any question about his skills, tech stack, or expertise.",
-  inputSchema: z.object({
-    category: z.string().optional().meta({
-      description:
-        'Optional category filter, e.g. "Frontend", "Backend", "Database", "AI / LLM", "Other"',
-    }),
-  }),
+  inputSchema: z.object({}),
   outputSchema: z.object({
     categories: z.array(
       z.object({
@@ -29,12 +24,8 @@ export const getSkillsDefinition = toolDefinition({
 export const getProjectsDefinition = toolDefinition({
   name: 'get_projects',
   description:
-    "Get Probir Sarkar's projects with name, description, live URL, GitHub URL, and tech stack. Use this to answer any question about his projects or work. Optionally filter by technology.",
-  inputSchema: z.object({
-    stack: z.string().optional().meta({
-      description: 'Optional technology filter, e.g. "Next.js", "AI SDK"',
-    }),
-  }),
+    "Get Probir Sarkar's projects with name, description, live URL, GitHub URL, and tech stack. Use this to answer any question about his projects or work.",
+  inputSchema: z.object({}),
   outputSchema: z.object({
     projects: z.array(
       z.object({
