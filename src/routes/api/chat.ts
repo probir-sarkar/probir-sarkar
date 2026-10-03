@@ -5,7 +5,6 @@ import {
   toServerSentEventsResponse,
 } from '@tanstack/ai'
 
-import { openRouterText } from '@tanstack/ai-openrouter'
 import type { Ai } from '@cloudflare/workers-types'
 
 import { createFileRoute } from '@tanstack/react-router'

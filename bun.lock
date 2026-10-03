@@ -12,7 +12,6 @@
         "@tanstack/ai": "^0.64.0",
         "@tanstack/ai-cloudflare": "^0.2.2",
         "@tanstack/ai-compaction": "^0.1.12",
-        "@tanstack/ai-openrouter": "^0.20.2",
         "@tanstack/ai-persistence": "^0.7.2",
         "@tanstack/ai-react": "^0.29.4",
         "@tanstack/react-devtools": "^0.10.13",
@@ -340,8 +339,6 @@
 
     "@oozcitak/util": ["@oozcitak/util@10.0.0", "", {}, "sha512-hAX0pT/73190NLqBPPWSdBVGtbY6VOhWYK3qqHqtXQ1gK7kS2yz4+ivsN07hpJ6I3aeMtKP6J6npsEKOAzuTLA=="],
 
-    "@openrouter/sdk": ["@openrouter/sdk@0.13.20", "", { "dependencies": { "zod": "^3.25.0 || ^4.0.0" } }, "sha512-fx4o19FHgadEldfrSOgSbXAi32hCE3O708q1nxcoxYrW6fP6/WggX3o5PmnlnObzmxrqLMkZpqg188K+Twguhg=="],
-
     "@oxc-parser/binding-android-arm-eabi": ["@oxc-parser/binding-android-arm-eabi@0.120.0", "", { "os": "android", "cpu": "arm" }, "sha512-WU3qtINx802wOl8RxAF1v0VvmC2O4D9M8Sv486nLeQ7iPHVmncYZrtBhB4SYyX+XZxj2PNnCcN+PW21jHgiOxg=="],
 
     "@oxc-parser/binding-android-arm64": ["@oxc-parser/binding-android-arm64@0.120.0", "", { "os": "android", "cpu": "arm64" }, "sha512-SEf80EHdhlbjZEgzeWm0ZA/br4GKMenDW3QB/gtyeTV1gStvvZeFi40ioHDZvds2m4Z9J1bUAUL8yn1/+A6iGg=="],
@@ -491,8 +488,6 @@
     "@tanstack/ai-compaction": ["@tanstack/ai-compaction@0.1.12", "", { "peerDependencies": { "@tanstack/ai": "^0.64.0" } }, "sha512-155fDOP/IMVKbpJTOc76LDKlOJ16S4gVQFG63wzkAnAj/qnLKCcl3EteAeBO68fQrCPymlSLp9pn5VhnP3Ou1Q=="],
 
     "@tanstack/ai-event-client": ["@tanstack/ai-event-client@0.13.0", "", { "dependencies": { "@tanstack/devtools-event-client": "^0.4.1" } }, "sha512-qGN7saScQHqDd06DE5CNG+wl1O9v6anwsGCCeP4N7zFbZd5k9/2C1u4cdJ2+Qxl2aA8drusLFZMhY/ljhBJqLQ=="],
-
-    "@tanstack/ai-openrouter": ["@tanstack/ai-openrouter@0.20.2", "", { "dependencies": { "@openrouter/sdk": "0.13.20", "@tanstack/ai-utils": "^0.4.1" }, "peerDependencies": { "@tanstack/ai": "^0.64.0" } }, "sha512-MUmvjvXiHuEnLXbihTVdQtHpVWQCqM4vKiVPWKcrkLyuqJu92MsrmiiSRLisjdrJoSIUK1h0Jp1TysctlLHVng=="],
 
     "@tanstack/ai-persistence": ["@tanstack/ai-persistence@0.7.2", "", { "dependencies": { "@tanstack/ai-utils": "^0.4.1" }, "peerDependencies": { "@tanstack/ai": "^0.64.0", "vitest": "^4.1.10" }, "optionalPeers": ["vitest"] }, "sha512-m81bTdWZQw2mGrQcBYnLylkSXGhsC6GfqxSEGv/XQUlRAEjVnlp7Fwk2fNiA3DmSaRLsoNIij6X6ZNChmN8fqg=="],
 
