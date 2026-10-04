@@ -45,7 +45,7 @@ export const Route = createFileRoute('/api/chat')({
 
         // const adapter = openRouterText('qwen/qwen3.8-flash')
         const ai = env.AI as unknown as Ai
-        const adapter = createCloudflareText('openai/gpt-6-luna', {
+        const adapter = createCloudflareText('@cf/zai-org/glm-5.3-flash', {
           binding: ai,
         })
 
